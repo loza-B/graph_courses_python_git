@@ -1,0 +1,189 @@
+
+```{python}
+import pandas as pd
+import numpy as np
+import vega_datasets as vd
+import plotly.express as px
+```
+
+
+# Intro to replace
+
+```{python}
+tips = px.data.tips()
+tips['day'].value_counts()
+```
+
+
+```{python}
+day_mapping = {
+    "Sun": "Sunday",
+    "Sat": "Saturday",
+    "Fri": "Friday",
+    "Thur": "Thursday"
+}
+
+tips['day'] = tips['day'].replace(day_mapping)
+tips
+```
+
+```{python}
+tips['day'] = tips['day'].replace({
+    "Sun": "Sunday",
+    "Sat": "Saturday",
+    "Fri": "Friday",
+    "Thur": "Thursday"
+})
+tips
+```
+
+# Practice Abbreviate Sex
+Using the tips dataset, replace the values in the sex column to abbreviate gender:
+
+Replace "Female" with "F".
+Replace "Male" with "M".
+Assign the result to a new column called sex_abbr and display the first few rows.
+
+
+```{python}
+tips['sex_abbr'] = tips['sex'].replace({
+    "Female": "F",
+    "Male": "M"
+})
+tips
+```
+
+
+# Handling Missing Values with replace()
+
+
+```{python}
+movies = vd.data.movies()
+movies["Creative_Type"].value_counts(dropna=False)
+```
+
+```{python}
+# Replacing None values with a string
+movies['Creative_Type'] = movies['Creative_Type'].replace({
+    None: "Unknown/Unclear", 
+})
+movies["Creative_Type"].value_counts(dropna=False)
+```
+
+
+```{python}
+# Replacing NaN values with a number
+movies['US_DVD_Sales'].tail(10)
+movies['US_DVD_Sales'] = movies['US_DVD_Sales'].replace({np.nan:0})
+```
+
+```{python}
+movies['US_DVD_Sales'].tail(10)
+```
+
+
+# Practice Q: Standardize MPAA Ratings
+In the movies dataset, the MPAA_Rating column contains movie ratings. Some entries are None or "Not Rated". Replace both None and "Not Rated" with "Unrated".
+
+Then, use value_counts() to see how many movies are unrated. There should be 699 movies in this category.
+
+```{python}
+movies['MPAA_Rating'] = movies['MPAA_Rating'].replace({
+    None: "Unrated", 
+    "Not Rated": "Unrated"
+})
+movies["MPAA_Rating"].value_counts(dropna=False)
+```
+
+# Categorizing Numeric Data with Custom Functions
+
+Categorize the US_Gross variable 
+
+- If the value is less than 10 million, the category is "Low".
+- If the value is between 10 million and 50 million, the category is "Medium".
+- If the value is greater than 50 million, the category is "High".
+
+```{python}
+def categ_gross(gross):
+    if gross < 10000000:
+        return "Low"
+    elif gross >= 10000000 and gross <= 50000000:
+        return "Medium"
+    elif gross > 50000000:
+        return "High"
+    else:
+        return None 
+
+categ_gross_vec = np.vectorize(categ_gross)
+categ_gross_vec([500,700])
+```
+
+```{python}
+movies['gross_category'] = categ_gross_vec(movies['US_Gross'])
+movies['gross_category']
+```
+
+# Complex Transformations with Custom Functions
+
+- For Super Hero movies, if the US gross and worldwide gross are the same (indicating sales were only in the US), the movie is flagged as a **US action movie**.
+- For Super Hero movies, if the worldwide gross is greater than the US gross, the movie is flagged as a **global action movie**.
+- For all other movies, we leave the flag blank
+
+
+```{python}
+def flag_movie(movie_type, us, worldwide):
+    if movie_type == 'Super Hero' and us == worldwide:
+        return 'US action movie'
+    elif movie_type == 'Super Hero' and worldwide > us:
+        return 'Global action movie'
+    else:
+        return None
+
+flag_movie_vec = np.vectorize(flag_movie)
+
+```
+
+
+```{python}
+flag_movie(movie_type='Super Hero', us=100, worldwide=100)
+
+flag_movie(movie_type='Super Hero', us=100, worldwide=200)
+
+flag_movie(movie_type='Comedy', us=100, worldwide=100)
+```
+
+```{python}
+movies['Action_Flag'] = flag_movie_vec(movie_type=movies['Creative_Type'], us=movies['US_Gross'], worldwide=movies ['Worldwide_Gross'])
+
+movies['Action_Flag'].value_counts()
+```
+
+
+# Practice: Flag Movies Based on Ratings
+In the movies dataset, flag movies as **Critic-friendly** or **Commercial** based on their Rotten Tomatoes and IMDB ratings.
+
+- If the Rotten Tomatoes rating is above 70% and the IMDB rating is below 5, the movie is flagged as **Critic-friendly**.
+- If the Rotten Tomatoes rating is below 50% and the IMDB rating is above 7, the movie is flagged as **Commercial**.
+- Otherwise, the movie is categorized as Other.
+- Count how many movies are Critic-friendly and Commercial. There should be 13 Critic-friendly movies and 33 Commercial movies. Do you recognize any of them?
+
+
+```{python}
+def flag_movie(IMDB_Rating, Rotten_Tomatoes_Rating):
+    if Rotten_Tomatoes_Rating > 70 and IMDB_Rating < 5:
+        return 'Critic_friendly'
+    elif Rotten_Tomatoes_Rating < 50 and IMDB_Rating > 7:
+        return 'Commercial'
+    else:
+        return "Other"
+
+flag_movie_vec = np.vectorize(flag_movie)
+```
+
+
+```{python}
+movies['Category'] = flag_movie_vec(movies["IMDB_Rating"],
+movies["Rotten_Tomatoes_Rating"])
+
+movies['Category'].value_counts()
+```

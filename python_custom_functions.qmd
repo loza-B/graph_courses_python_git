@@ -1,0 +1,228 @@
+
+# Import packages
+
+```{python}
+import pandas as pd
+import numpy as np
+import vega_datasets as vd
+```
+
+# Basics of a Function
+
+```{python}
+def pounds_to_kg(pounds):
+    return pounds * 0.4536
+```
+
+```{python}
+(pounds_to_kg(150))
+```
+
+```{python}
+def pounds_to_kg(pounds):
+    kg = pounds * 0.4536
+    return kg
+```
+
+```{python}
+pounds_df = pd.DataFrame({'pounds': [150, 200, 250]})
+pounds_df
+```
+
+```{python}
+pounds_df['kg'] = pounds_to_kg(pounds_df['pounds'])
+pounds_df
+```
+
+
+# Practice Q: Age in Months 
+Create a function called years_to_months that transforms age in years to age in months.
+
+Use it on the riots_df DataFrame imported below to create a new column called age_months:
+
+```{python}
+riots_df = vd.data.la_riots()
+riots_df 
+```
+
+```{python}
+def years_to_months(years):
+    return years * 12
+```
+
+```{python}
+riots_df['age_months'] = years_to_months(riots_df['age'])
+
+riots_df
+```
+
+
+# Functions with Multiple Arguments
+
+```{python}
+def calc_calories(carb_grams, protein_grams, fat_grams):
+    result = (carb_grams * 4) + (protein_grams * 4) + (fat_grams * 9)
+    return result
+```
+
+```{python}
+calc_calories(carb_grams=50, protein_grams=25, fat_grams=15)
+```
+
+```{python}
+# Does not work due to missing argument calc_calories(carb_grams=50, protein_grams=25)
+```
+
+```{python}
+# default arguments
+def calc_calories2(carb_grams=0, protein_grams=0, fat_grams=0):
+    result = (carb_grams * 4) + (protein_grams * 4) + (fat_grams * 9)
+    return result
+```
+
+```{python}
+calc_calories2(carb_grams=50)
+```
+
+```{python}
+food_df = pd.DataFrame({
+    'food': ['Apple', 'Avocado'],
+    'carb': [25, 10],
+    'protein': [0, 1],
+    'fat': [0, 14]
+})
+food_df
+```
+
+
+```{python}
+food_df['calories'] = calc_calories2(food_df['carb'], food_df['protein'], food_df['fat'])
+
+food_df
+```
+
+
+# Practice  BMI Function
+Create a function named calc_bmi that calculates the Body Mass Index (BMI) for one or more individuals, then apply the function by running the code chunk further below. The formula for BMI is weight (kg) divided by height (m) squared.
+
+```{python}
+def calc_bmi(weight, height):
+    bmi_df = weight / (height ** 2)
+    return bmi_df
+```
+
+```{python}
+bmi_df = pd.DataFrame({
+    'Weight': [70, 80, 100],  # in kg
+    'Height': [1.7, 1.8, 1.2]  # in meters
+})
+bmi_df['BMI'] = calc_bmi(bmi_df['Weight'], bmi_df['Height'])
+bmi_df
+```
+
+
+
+# Intro to Conditionals: if, elif, and else
+
+```{python}
+def class_num(num):
+    if num > 0:
+        return "Positive"
+    elif num < 0:
+        return "Negative"
+    elif num == 0: 
+        return "Zero"
+    else:
+        return "Invalid"
+
+print(class_num(5))
+print(class_num(-5))
+print(class_num(0))
+print(class_num(np.nan))
+```
+
+Using on a dataframe 
+
+```{python}
+num_df = pd.DataFrame({'num': [10, -5, 0]})
+num_df
+```
+
+```{python}
+# this does not work class_num(num_df['num'])
+```
+
+```{python}
+class_num_vec = np.vectorize(class_num)
+```
+
+```{python}
+num_df['category'] = class_num_vec(num_df['num'])
+num_df
+```
+
+## Grading example 
+
+- If the grade is 85 or above, the category is ‘Excellent’.
+- If the grade is between 60 and 84.9, the category is ‘Pass’.
+- If the grade is below 60, the category is ‘Fail’.
+- If the grade is negative or invalid, return ‘Invalid grade’.
+
+```{python}
+def categorize_grade(grade):
+    if grade >= 85 and grade <= 100:
+        return 'Excellent'
+    elif grade >= 60 and grade < 85:
+        return 'Pass'
+    elif grade >= 0 and grade < 60:
+        return 'Fail'
+    else:
+        return 'Invalid grade'
+
+categorize_grade(70)
+```
+
+
+```{python}
+categorize_grade_vec = np.vectorize(categorize_grade)
+```
+
+```{python}
+categorize_grade_vec([70, 80, 100])
+```
+
+# Practice Age Categorization Function
+Now, try writing a function that categorizes age into different life stages as described earlier. You should use the following criteria:
+
+-If the age is under 18, the category is ‘Minor’.
+- If the age is greater than or equal to 18 and less than 65, the category is ‘Adult’.
+- If the age is greater than or equal to 65, the category is ‘Senior’.
+- If the age is negative or invalid, return ‘Invalid age’.
+
+```{python}
+def categorize_age(age):
+    if age < 18:
+        return 'minor'
+    elif age >= 18 and age < 65:
+        return 'Adult'
+    elif age >= 65:
+        return 'Senior'
+    else:
+        return 'Invalid age'
+```
+
+```{python}
+categorize_age_vec = np.vectorize(categorize_age)
+```
+
+```{python}
+riots_df["age_category"] = categorize_age_vec(riots_df['age'])
+riots_df
+```
+```{python}
+riots_df = vd.data.la_riots()
+riots_df
+```
+
+
+

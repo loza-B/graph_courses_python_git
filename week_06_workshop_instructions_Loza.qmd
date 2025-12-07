@@ -1,0 +1,254 @@
+---
+title: "Workshop: Creating and Transforming Variables"
+author: "Loza Biru"
+---
+
+## Introduction
+
+For this workshop, you'll be cleaning and modifying a dataset with functions like `drop()`, `rename()`, `to_numeric()`, and `replace()`. These have been covered in the last few weeks of the prework.
+
+## Step 1: Load packages and data
+
+To get started, **load in the needed packages**: `pandas`, `numpy`, and `plotly.express`.
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+```
+
+Now, read in the dataset called `physical_activity.csv` from your data folder and save it as `pa`.
+
+It should have 142 rows and 9 columns.
+
+```{python}
+pa = pd.read_csv('data/physical_activity.csv')
+pa
+```
+
+## Step 2: Subset and rename variables
+
+Next, drop the "personal_id" and "household_id" variables from the DataFrame.
+
+```{python}
+pa = pa.drop(columns=["personal_id", "household_id"])
+```
+
+
+Now, rename `oms_recommendation` to `who_recommendation`. (OMS is the French name for WHO.)
+
+```{python}
+pa = pa.rename(columns={"oms_recommendation": "who_recommendation"})
+pa
+```
+
+Your data should now have 7 variables: 
+
+- `sex`: male or female 
+- `status`: adult (Adulte) or child (Enfant) 
+- `bmi`: body mass index 
+- `sedentary_ap_s_day`: sedentary behaviour (seconds/day) 
+- `light_ap_s_day`: light physical activity (seconds/day) 
+- `mvpa_s_day`: moderate to vigorous physical activity (seconds/day) 
+- `who_recommendation`: whether or not WHO recommendations for physical activity are met
+
+## Step 3: Examine and convert data types
+
+Let's think about the types of variables in our dataset. 
+
+Check the data types that were automatically assigned to each variable with `info()`.
+
+```{python}
+pa.info()
+```
+
+Notice that all of your variables are of type **object** (which is a catch-all for strings), but some    should be **numeric** (e.g., `bmi`). 
+
+This is because the numeric variables have the words "missing" in them to indicate that the value is missing. Can you spot those words when you view the dataset?
+
+We'll use the `pd.to_numeric()` function to convert these variables to numeric. 
+
+Here is an example of how to use this.
+
+```{python}
+test_df = pd.DataFrame({"bmi": ["32.2", "missing", "18.8", "17.8", "21.1"]})
+test_df["bmi"] = pd.to_numeric(test_df["bmi"], errors="coerce")
+test_df
+```
+
+The missing values are represented as `NaN` after the conversion.
+
+Now, fill in the blanks below to apply this to your `pa` DataFrame.
+
+```{python}
+# Change variables' type
+pa["bmi"] = pd.to_numeric(pa["bmi"], errors="coerce")
+pa["sedentary_ap_s_day"] = pd.to_numeric(pa["sedentary_ap_s_day"], errors="coerce")
+pa["light_ap_s_day"] = pd.to_numeric(pa["light_ap_s_day"], errors="coerce")
+pa["mvpa_s_day"] = pd.to_numeric(pa["mvpa_s_day"], errors="coerce")
+```
+
+Check the data types again with `info()`.
+
+## Step 4: Recode the `status` variable
+
+Next, notice that the `status` variable currently uses the French terms "Adulte" and "Enfant". 
+
+```{python}
+pa["status"].value_counts()
+```
+
+Use the `.replace()` method to transform the `status` variable by replacing "Adulte" with "Adult" and "Enfant" with "Child".
+
+```{python}
+pa["status"]= pa["status"].replace({"Adulte": "Adult", "Enfant":"Child"})
+pa
+```
+
+## Step 5: Convert the physical activity variables
+
+There are 3 physical activity variables: sedentary behavior (`sedentary_ap_s_day`), light physical activity (`light_ap_s_day`), and moderate to vigorous physical activity (`mvpa_s_day`). 
+
+These variables are currently measured in seconds per day.
+
+However, most [recommendations](https://apps.who.int/iris/bitstream/handle/10665/337001/9789240014886-eng.pdf) for physical activity are in minutes per week, so we want to align with these measures. 
+
+To do this, complete the following manipulations:
+
+1. Use arithmetic operations to create new variables called `sedentary_ap_m_wk`, `light_ap_m_wk`, and `mvpa_m_wk` that are in minutes per week.
+
+2. Remove the previous seconds per day variables.
+
+```{python}
+pa["sedentary_ap_m_wk"] = pa["sedentary_ap_s_day"] / 60 * 7
+
+pa["light_ap_m_wk"] = pa["light_ap_s_day"] / 60 * 7
+
+pa["mvpa_m_wk"] = pa["mvpa_s_day"] / 60 * 7
+
+pa
+```
+
+```{python}
+pa = pa.drop(columns=["sedentary_ap_s_day", "light_ap_s_day", "mvpa_s_day"])
+```
+
+
+## Step 6: Total physical activity
+
+Create a new column that adds light physical activity and moderate to vigorous physical activity, and call it `total_pa_m_wk`. 
+
+This should give us the total amount of activity in minutes per week. 
+
+```{python}
+pa["total_pa_m_wk"] = pa["light_ap_m_wk"] + pa["mvpa_m_wk"]
+
+pa
+```
+
+## Step 7: Categorical variable for total physical activity
+
+Write a custom function that bins its input variable into three categories:
+
+- `low`: less than 500 minutes per week (< 500)
+- `medium`: between 500 and 1000 minutes per week (>= 500 and < 1000)
+- `high`: greater than 1000 minutes per week (>= 1000)
+
+Apply this function to the `pa` DataFrame to create a categorical variable called `total_pa_cat`
+
+```{python}
+def total_pa_cat(total_pa_m_wk):
+   if total_pa_m_wk < 500:
+      return "low"
+   elif total_pa_m_wk >= 500 and total_pa_m_wk < 1000:
+      return "medium"
+   elif total_pa_m_wk >= 1000:
+      return "high"
+total_pa_cat_vec = np.vectorize(total_pa_cat)
+```
+
+```{python}
+pa["total_pa_cat"] = total_pa_cat_vec(pa["total_pa_m_wk"])
+pa
+```
+
+## Step 8: Visualize data with plotly express
+
+In this section you will use `pa` to generate some plots!
+
+### Plot 1: Histogram
+
+Histograms are best used to visualize the distribution of a single numeric (continuous) variable. Choose a variable from the dataset that you can plot a histogram with.
+
+Using plotly express, create and print a histogram.
+
+```{python}
+px.histogram(
+   pa,
+   x= "total_pa_m_wk",
+   labels = {"total_pa_m_wk": "Total physical activity per week"},
+   title="Distribution of Total physical activity per week",
+   color_discrete_sequence=["#a98de0"]
+)
+```
+
+
+### Plot 2: Boxplot
+
+Boxplots are best used to visualize the distribution of a numeric variable, split by the values of a discrete/categorical variable.
+
+Use plotly express to create and print a boxplot.
+
+Use the same variable used for your histogram on your y-axis, and plot it against a categorical variable on your x-axis.
+
+Set fill color to match the values of your categorical variable.
+
+```{python}
+px.box(
+   pa, 
+   y="total_pa_m_wk", 
+   x="sex", 
+   color="sex", 
+   labels={"total_pa_m_wk": "Total physical activity per week"},
+   title="Distribution of Total physical activity per week by sex",
+   )
+```
+
+Write a short explanation of what you see in the plot.
+On average, males had a higher total physical activity per week compared to females. 
+
+## Optional Challenge Question: Health Risk Classification
+
+1. Write a function `assess_risk()` that:  
+   - Returns `"High Risk"` if **BMI ≥ 30** and **total physical activity < 500 min/week**  
+   - Otherwise, returns `"Not High Risk"`  
+
+2. Create a new column `risk_category` in your `pa` DataFrame by applying this function.  
+
+3. Make a percentage stacked bar chart showing the count of `"High Risk"` and `"Not High Risk"` individuals, grouped by `sex`. 
+
+Comment on the findings. Which gender has a higher proportion of high risk individuals?
+
+
+```{python}
+def assess_risk(bmi, total_pa_m_wk):
+   if bmi >= 30 and total_pa_m_wk < 500:
+      return "High Risk"
+   else:
+      return "Not High RisK"
+
+assess_risk_vec = np.vectorize(assess_risk)
+```
+
+
+```{python}
+pa["risk_category"] = assess_risk_vec(pa["bmi"], pa["total_pa_m_wk"])
+pa
+```
+
+
+```{python}
+px.histogram(pa, x="risk_category", color="sex", barnorm="percent", text_auto=True)
+```
+
+There is a higher proportion of at risk individuals among females (72.7%).

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Loza Biru">
+
+<title>India TB Pathways Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="week_04_workshop_files/libs/clipboard/clipboard.min.js"></script>
+<script src="week_04_workshop_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="week_04_workshop_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="week_04_workshop_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="week_04_workshop_files/libs/quarto-html/popper.min.js"></script>
+<script src="week_04_workshop_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="week_04_workshop_files/libs/quarto-html/anchor.min.js"></script>
+<link href="week_04_workshop_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="week_04_workshop_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="week_04_workshop_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="week_04_workshop_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="week_04_workshop_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+</script>
+<script type="module">import "https://cdn.plot.ly/plotly-3.1.1.min"</script>
+
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">India TB Pathways Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Loza Biru </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-india-tb-pathways-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="the-india-tb-pathways-dataset">The India TB Pathways dataset</h2>
+<p><em>The India TB Pathways dataset is based on a study conducted in Vellore district, Tamil Nadu, India. It examines the pre-diagnostic costs and health-seeking behavior of 880 new adult pulmonary tuberculosis patients registered at Primary Health Centres (PHCs).</em></p>
+<div id="112ff1de" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<!--| quarto-html-table-processing: none -->
+<table id="itables_8482b4ae_4289_4b45_a75b_2c7df07492a4"><tbody><tr>
+    <td style="vertical-align:middle; text-align:left">
+    <a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
+    <g style="fill:#d9d7fc">
+        <path d="M100,400H500V357H100Z"></path>
+        <path d="M100,300H400V257H100Z"></path>
+        <path d="M0,200H400V157H0Z"></path>
+        <path d="M100,100H500V57H100Z"></path>
+        <path d="M100,350H500V307H100Z"></path>
+        <path d="M100,250H400V207H100Z"></path>
+        <path d="M0,150H400V107H0Z"></path>
+        <path d="M100,50H500V7H100Z"></path>
+    </g>
+    <g style="fill:#1a1366;stroke:#1a1366;">
+   <rect x="100" y="7" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="0" y="107" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="207" width="300" height="43">
+    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="307" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
+  </rect>
+        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
+            <g transform="translate(45 50) rotate(-45)">
+                <circle r="33" cx="0" cy="0"></circle>
+                <rect x="-8" y="32" width="16" height="30"></rect>
+            </g>
+
+            <g transform="translate(450 152)">
+                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
+                <rect x="-15" y="-40" width="60" height="60"></rect>
+            </g>
+
+            <g transform="translate(50 352)">
+                <polygon points="-35,-5 0,-40 35,-5"></polygon>
+                <polygon points="-35,10 0,45 35,10"></polygon>
+            </g>
+
+            <g transform="translate(75 250)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+
+            <g transform="translate(425 250) rotate(180)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>
+</a>
+    Loading ITables v2.5.2 from the internet...
+    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
+    </tr></tbody></table>
+<link href="https://www.unpkg.com/dt_for_itables@2.4.0/dt_bundle.css" rel="stylesheet">
+<script type="module">
+    import { ITable, jQuery as $ } from 'https://www.unpkg.com/dt_for_itables@2.4.0/dt_bundle.js';
+
+    document.querySelectorAll("#itables_8482b4ae_4289_4b45_a75b_2c7df07492a4:not(.dataTable)").forEach(table => {
+        if (!(table instanceof HTMLTableElement))
+            return;
+
+        let dt_args = {"layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "classes": ["display", "nowrap"], "text_in_header_can_be_selected": true, "order": [], "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "downsampling_warning": "<a href=\"https://mwouts.github.io/itables/downsampling.html\">downsampled</a> from 880x21 to 390x21 as maxBytes=64KB", "filtered_row_count": 490, "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>id</th>\n      <th>Sex</th>\n      <th>Age</th>\n      <th>Education</th>\n      <th>Employment</th>\n      <th>Alcohol</th>\n      <th>Smoking</th>\n      <th>WtinKgs</th>\n      <th>HtinCms</th>\n      <th>bmi</th>\n      <th>Diabetes</th>\n      <th>Form of TB</th>\n      <th>Chext Xray</th>\n      <th>first visit location</th>\n      <th>first visit cost</th>\n      <th>second visit location</th>\n      <th>second visit cost</th>\n      <th>third visit location</th>\n      <th>third visit cost</th>\n      <th>Health sys delay (in days)</th>\n      <th>Treatment initiation delay (in days)</th>\n    </tr>\n  </thead></table>", "data_json": "[[100202, \"Male\", 57, \"Middle\", \"Working\", \"Yes\", \"Yes\", 58.0, 165.0, 21.3, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 15.0, 10.0], [100396, \"Female\", 66, \"No Education\", \"Non - Working\", \"No\", \"No\", 32.0, 163.0, 12.0, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 1500, \"Pvt. clini\", 1000, \"Pvt. hospi\", 2500, 60.0, 4.0], [100590, \"Female\", 45, \"Missing\", \"Non - Working\", \"No\", \"No\", 46.0, 150.0, 20.4, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 2000, \"Pvt. docto\", 3000, \"PHC\", 0, 43.0, 21.0], [100687, \"Male\", 27, \"Middle\", \"Non - Working\", \"No\", \"No\", 51.0, 165.0, 18.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 20000, \"Pvt. hospi\", 1500, \"PHC\", 0, 35.0, 5.0], [100784, \"Male\", 54, \"Middle\", \"Non - Working\", \"No\", \"No\", 39.0, 160.0, 15.2, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 14.0, 6.0], [100978, \"Male\", 60, \"No Education\", \"Working\", \"No\", \"No\", 43.0, 155.0, 17.9, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 2000, \"GH\", 0, \"NaN\", 0, 14.0, 10.0], [101075, \"Male\", 28, \"Primary\", \"Working\", \"No\", \"No\", 47.0, 165.0, 17.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"Pvt. docto\", 1000, \"PHC\", 0, 7.0, 2.0], [101172, \"Female\", 21, \"Graduate\", \"Non - Working\", \"No\", \"No\", 31.0, 160.0, 12.1, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 3.0], [101269, \"Male\", 34, \"Middle\", \"Working\", \"No\", \"No\", 44.0, 165.0, 16.2, 0, \"Ini smear +\", \"Negative\", \"T.Govt\", 0, \"NaN\", 0, \"NaN\", 0, 6.0, 4.0], [101366, \"Male\", 48, \"Middle\", \"Working\", \"No\", \"No\", 40.0, 160.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 10.0, 6.0], [101560, \"Male\", 40, \"No Education\", \"Working\", \"No\", \"No\", 58.0, 166.0, 21.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 750, \"GH\", 0, \"NaN\", 0, 14.0, 3.0], [101657, \"Male\", 46, \"Middle\", \"Working\", \"Yes\", \"Yes\", 42.0, 165.0, 15.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 5000, \"GH\", 0, \"NaN\", 0, 21.0, 3.0], [101948, \"Female\", 30, \"Secondary\", \"Working\", \"No\", \"No\", 38.0, 152.0, 16.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 14.0, 6.0], [102045, \"Male\", 38, \"Primary\", \"Working\", \"No\", \"No\", 38.0, 160.0, 14.8, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 800, \"PHC\", 0, \"NaN\", 0, 21.0, 3.0], [102142, \"Male\", 27, \"Secondary\", \"Working\", \"No\", \"No\", 40.0, 152.0, 17.3, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 6.0], [102433, \"Male\", 35, \"No Education\", \"Working\", \"No\", \"No\", 45.0, 150.0, 20.0, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 10.0, 7.0], [102627, \"Male\", 52, \"Primary\", \"Non - Working\", \"No\", \"No\", 36.0, 150.0, 16.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 300, \"GH\", 0, \"NaN\", 0, 21.0, 1.0], [102724, \"Male\", 52, \"Middle\", \"Working\", \"No\", \"No\", 60.0, 169.0, 21.0, 1, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 1000, \"Pvt. clini\", 250, \"GH\", 0, 14.0, 3.0], [102821, \"Male\", 38, \"Middle\", \"Working\", \"Yes\", \"No\", 40.0, 162.0, 15.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 800, \"Pvt. clini\", 200, \"GH\", 0, 21.0, 3.0], [102918, \"Male\", 30, \"Primary\", \"Working\", \"No\", \"No\", 35.0, 145.0, 16.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 200, \"Pvt. clini\", 500, \"GH\", 0, 14.0, 1.0], [103015, \"Female\", 36, \"Middle\", \"Working\", \"No\", \"No\", 48.0, 145.0, 22.8, 0, \"Ini smear +\", \"Negative\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 3.0, 4.0], [103209, \"Male\", 65, \"No Education\", \"Non - Working\", \"No\", \"No\", 48.0, 162.0, 18.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 300, \"GH\", 0, \"NaN\", 0, 60.0, 0.0], [103306, \"Female\", 25, \"Middle\", \"Working\", \"No\", \"No\", 45.0, 150.0, 20.0, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 2000, \"Pvt. docto\", 700, \"GH\", 0, 60.0, 1.0], [103403, \"Female\", 51, \"No Education\", \"Non - Working\", \"No\", \"No\", 40.0, 165.0, 14.7, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 200, \"GH\", 0, \"NaN\", 0, 14.0, 7.0], [103500, \"Male\", 65, \"No Education\", \"Non - Working\", \"No\", \"No\", 35.0, 162.0, 13.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 200, \"GH\", 0, \"NaN\", 0, 21.0, 8.0], [103694, \"Male\", 55, \"Middle\", \"Working\", \"No\", \"No\", 46.0, 155.0, 19.1, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 14.0, 1.0], [103791, \"Female\", 22, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 32.0, 145.0, 15.2, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 250, \"GH\", 0, \"NaN\", 0, 21.0, 9.0], [103888, \"Male\", 35, \"Primary\", \"Working\", \"No\", \"No\", 46.0, 160.0, 18.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 250, \"GH\", 0, \"NaN\", 0, 30.0, 2.0], [103985, \"Male\", 32, \"Primary\", \"Working\", \"No\", \"No\", 46.0, 162.0, 17.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"Pvt. hospi\", 1000, \"GH\", 0, 19.0, 0.0], [104082, \"Male\", 55, \"Secondary\", \"Working\", \"No\", \"No\", 52.0, 163.0, 19.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 200, \"GH\", 0, \"NaN\", 0, 21.0, 5.0], [104179, \"Male\", 55, \"Middle\", \"Working\", \"No\", \"No\", 40.0, 165.0, 14.7, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 200, \"GH\", 0, \"NaN\", 0, 14.0, 5.0], [104276, \"Male\", 38, \"Primary\", \"Working\", \"No\", \"No\", 49.0, 165.0, 18.0, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 300, \"GH\", 0, \"NaN\", 0, 21.0, 4.0], [104373, \"Male\", 55, \"No Education\", \"Non - Working\", \"No\", \"No\", 49.0, 165.0, 18.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 250, \"GH\", 0, \"NaN\", 0, 14.0, 2.0], [108835, \"Male\", 55, \"No Education\", \"Working\", \"No\", \"No\", 47.0, 160.0, 18.4, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 18.0], [200209, \"Male\", 25, \"Higher Secondary\", \"Working\", \"Yes\", \"No\", 43.0, 150.0, 19.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 3000, \"Pvt. hospi\", 1500, \"GH\", 0, 9.0, 21.0], [200306, \"Male\", 42, \"No Education\", \"Working\", \"Yes\", \"No\", 45.0, 175.0, 14.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"Pvt. docto\", 2000, \"GH\", 0, 30.0, \"___NaN___\"], [200403, \"Female\", 50, \"No Education\", \"Non - Working\", \"No\", \"No\", 35.0, 145.0, 16.6, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"Pvt. docto\", 500, \"NaN\", 0, 15.0, \"___NaN___\"], [200500, \"Male\", 54, \"No Education\", \"Working\", \"Yes\", \"Yes\", 34.0, 150.0, 15.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"Pvt. clini\", 100, \"GH\", 0, 15.0, 31.0], [200694, \"Male\", 48, \"No Education\", \"Working\", \"Yes\", \"Yes\", 35.0, 161.0, 13.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 500, \"Pvt. clini\", 300, \"Pvt. docto\", 4000, 20.0, 5.0], [200791, \"Female\", 55, \"No Education\", \"Non - Working\", \"No\", \"No\", 38.0, 150.0, 16.9, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 850, \"GH\", 0, \"NaN\", 0, 30.0, 4.0], [200888, \"Male\", 27, \"Primary\", \"Working\", \"Yes\", \"No\", 48.0, 150.0, 21.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 600, \"T.Pvt\", 2500, \"Pvt. hospi\", 2500, 17.0, 9.0], [201082, \"Male\", 57, \"Middle\", \"Working\", \"Yes\", \"Yes\", 38.0, 145.0, 18.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 600, \"GH\", 0, \"NaN\", 0, 30.0, 7.0], [201179, \"Female\", 20, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 36.0, 140.0, 18.4, 0, \"Ini smear +\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 1.0], [201276, \"Female\", 30, \"No Education\", \"Working\", \"No\", \"No\", 34.0, 140.0, 17.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 2500, \"T.Govt\", 0, \"NaN\", 0, 30.0, 8.0], [201373, \"Male\", 52, \"Primary\", \"Working\", \"Yes\", \"Yes\", 45.0, 165.0, 16.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 200, \"GH\", 0, \"NaN\", 0, 90.0, 4.0], [201470, \"Male\", 40, \"Middle\", \"Working\", \"Yes\", \"No\", 62.0, 170.0, 21.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 200, \"PHC\", 0, \"NaN\", 0, 30.0, 1.0], [201761, \"Male\", 38, \"Secondary\", \"Working\", \"Yes\", \"No\", 57.0, 165.0, 20.9, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1000, \"GH\", 0, \"NaN\", 0, 30.0, 36.0], [201858, \"Male\", 70, \"No Education\", \"Working\", \"Yes\", \"No\", 34.0, 150.0, 15.1, 0, \"Ini smear -\", \"Positive\", \"GH\", 500, \"NaN\", 0, \"NaN\", 0, 14.0, 1.0], [202246, \"Male\", 27, \"No Education\", \"Working\", \"No\", \"No\", 46.0, 155.0, 19.1, 0, \"Ini smear -\", \"NaN\", \"Pvt. hospi\", 1000, \"GH\", 0, \"NaN\", 0, 15.0, 5.0], [202343, \"Female\", 35, \"Primary\", \"Working\", \"No\", \"No\", 35.0, 150.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 5.0], [202440, \"Male\", 24, \"Secondary\", \"Working\", \"Yes\", \"No\", 42.0, 150.0, 18.7, 0, \"Missing\", \"Positive\", \"Pvt. docto\", 750, \"Pvt. docto\", 250, \"GH\", 0, 7.0, 3.0], [202537, \"Female\", 45, \"No Education\", \"Working\", \"No\", \"No\", 44.0, 160.0, 17.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 7.0, 4.0], [202634, \"Male\", 73, \"Primary\", \"Working\", \"Yes\", \"Yes\", 46.0, 150.0, 20.4, 0, \"Ini smear -\", \"NaN\", \"Pvt. docto\", 500, \"Pvt. hospi\", 2000, \"GH\", 0, 15.0, 3.0], [202731, \"Male\", 60, \"No Education\", \"Working\", \"Yes\", \"Yes\", 52.0, 150.0, 23.1, 0, \"Ini smear -\", \"NaN\", \"Pvt. docto\", 200, \"Pvt. docto\", 1200, \"GH\", 0, 30.0, 4.0], [202828, \"Female\", 30, \"No Education\", \"Working\", \"No\", \"No\", 35.0, 150.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 5000, \"GH\", 0, \"NaN\", 0, 13.0, 43.0], [202925, \"Male\", 42, \"Primary\", \"Working\", \"Yes\", \"No\", 50.0, 150.0, 22.2, 0, \"Ini smear +\", \"NaN\", \"GH\", 500, \"NaN\", 0, \"NaN\", 0, 30.0, 7.0], [203022, \"Female\", 24, \"Secondary\", \"Working\", \"No\", \"No\", 33.0, 140.0, 16.8, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 3.0], [203119, \"Male\", 24, \"Higher Secondary\", \"Working\", \"Yes\", \"Yes\", 46.0, 165.0, 16.9, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 900, \"Pvt. hospi\", 1500, \"GH\", 0, 90.0, 2.0], [203216, \"Female\", 28, \"Secondary\", \"Working\", \"No\", \"No\", 46.0, 150.0, 20.4, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 3000, \"Pvt. docto\", 2000, \"Pvt. hospi\", 4000, 7.0, 23.0], [203313, \"Female\", 40, \"No Education\", \"Working\", \"No\", \"No\", 40.5, 145.0, 19.3, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 100, \"Pvt. hospi\", 3000, \"GH\", 0, 15.0, 31.0], [203410, \"Male\", 20, \"Secondary\", \"Working\", \"No\", \"No\", 44.0, 160.0, 17.2, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 500, \"Pvt. hospi\", 15000, \"GH\", 0, 15.0, 6.0], [203507, \"Male\", 38, \"Middle\", \"Working\", \"Yes\", \"No\", 33.0, 150.0, 14.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"T.Govt\", 0, \"GH\", 0, 32.0, 32.0], [203604, \"Female\", 22, \"Middle\", \"Non - Working\", \"No\", \"No\", 40.0, 155.0, 16.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"GH\", 0, \"NaN\", 0, 7.0, 3.0], [204089, \"Female\", 45, \"No Education\", \"Working\", \"No\", \"No\", 49.0, 150.0, 21.8, 0, \"Ini smear +\", \"Negative\", \"Pvt. clini\", 500, \"Pvt. docto\", 200, \"Pvt. hospi\", 300, 30.0, 21.0], [204186, \"Male\", 26, \"Primary\", \"Working\", \"Yes\", \"No\", 45.0, 150.0, 20.0, 0, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 500, \"Pvt. docto\", 2000, \"GH\", 0, 15.0, 8.0], [204380, \"Female\", 21, \"Middle\", \"Working\", \"No\", \"No\", 38.0, 145.0, 18.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 500, \"Pvt. docto\", 600, \"GH\", 0, 15.0, 7.0], [204477, \"Male\", 39, \"No Education\", \"Working\", \"Yes\", \"No\", 54.0, 150.0, 24.0, 1, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 20.0, 17.0], [204574, \"Male\", 55, \"No Education\", \"Working\", \"Yes\", \"Yes\", 59.0, 150.0, 26.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 500, \"Pvt. clini\", 1500, \"GH\", 0, 25.0, 0.0], [204671, \"Male\", 34, \"Primary\", \"Working\", \"Yes\", \"No\", 47.0, 160.0, 18.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 250, \"GH\", 0, \"NaN\", 0, 10.0, 10.0], [204768, \"Female\", 24, \"Middle\", \"Working\", \"No\", \"No\", 37.0, 140.0, 18.9, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"Tambram Sanatorium\", 0, \"NaN\", 0, 27.0, 25.0], [205059, \"Male\", 38, \"Primary\", \"Working\", \"Yes\", \"Yes\", 48.0, 175.0, 15.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1500, \"GH\", 0, \"NaN\", 0, 90.0, 5.0], [205156, \"Male\", 45, \"Primary\", \"Working\", \"No\", \"No\", 75.0, 170.0, 26.0, 1, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 15.0, 10.0], [205253, \"Male\", 55, \"No Education\", \"Working\", \"No\", \"No\", 32.0, 170.0, 11.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1200, \"GH\", 0, \"NaN\", 0, 16.0, 4.0], [205350, \"Male\", 35, \"Primary\", \"Working\", \"Yes\", \"Yes\", 50.3, 150.0, 22.4, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 30.0, 5.0], [205544, \"Female\", 19, \"Secondary\", \"Working\", \"No\", \"No\", 43.0, 150.0, 19.1, 0, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 1300, \"Pvt. clini\", 200, \"GH\", 0, 30.0, 7.0], [205641, \"Male\", 60, \"Primary\", \"Working\", \"Yes\", \"Yes\", 48.0, 165.0, 17.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 650, \"Pvt. hospi\", 500, \"GH\", 0, 30.0, 7.0], [205738, \"Male\", 18, \"Secondary\", \"Working\", \"No\", \"No\", 45.0, 148.0, 20.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 600, \"Pvt. hospi\", 400, \"GH\", 0, 24.0, 0.0], [206126, \"Female\", 45, \"No Education\", \"Non - Working\", \"No\", \"No\", 33.0, 150.0, 14.7, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 17.0, 15.0], [206223, \"Male\", 19, \"Graduate\", \"Non - Working\", \"No\", \"No\", 34.0, 150.0, 15.1, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 5.0], [206320, \"Male\", 39, \"Secondary\", \"Working\", \"Yes\", \"Yes\", 37.0, 160.0, 14.5, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 24.0], [206417, \"Male\", 36, \"Primary\", \"Working\", \"No\", \"Yes\", 39.0, 160.0, 15.2, 0, \"Ini smear -\", \"Positive\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 55.0], [206611, \"Male\", 37, \"Primary\", \"Working\", \"No\", \"No\", 48.0, 170.0, 16.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 500, \"PHC\", 0, \"GH\", 0, 23.0, 7.0], [206708, \"Male\", 25, \"Middle\", \"Working\", \"Yes\", \"No\", 40.0, 150.0, 17.8, 0, \"Ini smear -\", \"Positive\", \"Tambram sanatorium\", 0, \"Pvt. docto\", 1000, \"GH\", 0, 18.0, 12.0], [206805, \"Male\", 36, \"No Education\", \"Working\", \"Yes\", \"No\", 54.0, 150.0, 24.0, 0, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 1450, \"Pvt. hospi\", 4500, \"NaN\", 0, 14.0, 50.0], [300119, \"Female\", 50, \"No Education\", \"Working\", \"No\", \"No\", 43.0, 130.0, 25.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 600, \"Pvt. hospi\", 1400, \"GH\", 0, 15.0, 0.0], [300313, \"Male\", 62, \"Primary\", \"Working\", \"No\", \"Yes\", 36.0, 150.0, 16.0, 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"Pvt. docto\", 220, \"GH\", 0, 20.0, 1.0], [300507, \"Female\", 40, \"No Education\", \"Working\", \"No\", \"Yes\", 30.0, 140.0, 15.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 500, \"GH\", 0, \"NaN\", 0, 13.0, 23.0], [300604, \"Female\", 50, \"Primary\", \"Working\", \"No\", \"No\", 42.0, 151.0, 18.4, 0, \"Ini smear -\", \"Positive\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 7.0, 2.0], [300992, \"Male\", 52, \"Middle\", \"Working\", \"Yes\", \"Yes\", 45.0, 160.0, 17.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 150, \"Pvt. hospi\", 400, \"GH\", 0, 10.0, 6.0], [301380, \"Male\", 57, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 45.0, 161.0, 17.4, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 400, \"Pvt. docto\", 200, \"GH\", 0, 15.0, 4.0], [301477, \"Male\", 67, \"Higher Secondary\", \"Working\", \"No\", \"No\", 55.0, 161.0, 21.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 900, \"GH\", 0, \"NaN\", 0, 60.0, 3.0], [301574, \"Male\", 65, \"No Education\", \"Working\", \"No\", \"No\", 47.0, 159.0, 18.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 5000, \"GH\", 0, \"NaN\", 0, 25.0, 5.0], [301671, \"Male\", 75, \"Primary\", \"Working\", \"No\", \"Yes\", 41.0, 152.0, 17.7, 0, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 3000, \"PHC\", 0, \"GH\", 0, 7.0, 2.0], [301865, \"Male\", 60, \"Primary\", \"Non - Working\", \"No\", \"No\", 50.0, 165.0, 18.4, 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"Pvt. docto\", 2000, \"GH\", 0, 25.0, 5.0], [301962, \"Female\", 65, \"No Education\", \"Non - Working\", \"No\", \"No\", 38.0, 156.0, 15.6, 0, \"Ini smear +\", \"Positive\", \"Pvt. hospi\", 400, \"PHC\", 0, \"GH\", 0, 21.0, 3.0], [302059, \"Female\", 40, \"No Education\", \"Non - Working\", \"No\", \"No\", 42.0, 154.0, 17.7, 0, \"Ini smear -\", \"Positive\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 10.0, 23.0], [302253, \"Male\", 30, \"No Education\", \"Working\", \"No\", \"No\", 50.0, 150.0, 22.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1000, \"GH\", 0, \"NaN\", 0, 7.0, 3.0], [302350, \"Female\", 26, \"No Education\", \"Non - Working\", \"No\", \"No\", 34.0, 156.0, 14.0, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 2.0], [302447, \"Male\", 65, \"No Education\", \"Working\", \"No\", \"No\", 53.0, 170.0, 18.3, 0, \"Ini smear +\", \"NaN\", \"T.Pvt\", 2000, \"Pvt. hospi\", 15000, \"GH\", 0, \"___NaN___\", 2.0], [302544, \"Female\", 45, \"No Education\", \"Non - Working\", \"No\", \"No\", 37.0, 157.0, 15.0, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 7.0, 2.0], [302641, \"Male\", 24, \"Secondary\", \"Working\", \"No\", \"No\", 45.0, 167.0, 16.1, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 6.0, 4.0], [302738, \"Male\", 38, \"Primary\", \"Working\", \"No\", \"No\", 50.0, 160.0, 19.5, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 20.0, 9.0], [302835, \"Female\", 31, \"Middle\", \"Working\", \"No\", \"No\", 35.0, 152.0, 15.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 2500, \"GH\", 0, \"NaN\", 0, 15.0, 2.0], [302932, \"Male\", 57, \"No Education\", \"Non - Working\", \"No\", \"No\", 38.0, 158.0, 15.2, 0, \"Ini smear +\", \"Positive\", \"Pvt. hospi\", 0, \"NaN\", 0, \"NaN\", 0, 10.0, 5.0], [303320, \"Male\", 67, \"No Education\", \"Working\", \"No\", \"No\", 47.0, 150.0, 20.9, 0, \"Ini smear -\", \"Positive\", \"PHC\", 0, \"Pvt. docto\", 10000, \"GH\", 0, 60.0, 7.0], [303417, \"Male\", 42, \"Secondary\", \"Working\", \"Yes\", \"No\", 59.0, 149.0, 26.6, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 700, \"GH\", 0, \"NaN\", 0, 40.0, 6.0], [303514, \"Male\", 64, \"Primary\", \"Non - Working\", \"No\", \"No\", 39.0, 152.0, 16.9, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 20000, \"PHC\", 0, \"GH\", 0, 210.0, 4.0], [303611, \"Male\", 42, \"No Education\", \"Working\", \"No\", \"No\", 52.0, 152.0, 22.5, 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"Pvt. docto\", 500, \"Pvt. hospi\", 3000, 11.0, 8.0], [303708, \"Male\", 36, \"Secondary\", \"Working\", \"No\", \"No\", 45.0, 160.0, 17.6, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"PHC\", 0, \"Tambram Sanatorium\", 0, 30.0, 1.0], [303805, \"Female\", 40, \"Primary\", \"Working\", \"No\", \"No\", 38.0, 152.0, 16.4, 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 20.0, 5.0], [303902, \"Male\", 48, \"No Education\", \"Working\", \"No\", \"No\", 48.0, 151.0, 21.1, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 4000, \"PHC\", 0, \"GH\", 0, 10.0, 1.0], [304096, \"Male\", 44, \"Secondary\", \"Working\", \"No\", \"No\", 47.4, 164.0, 17.6, 1, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 6000, \"GH\", 0, \"NaN\", 0, 10.0, 13.0], [304193, \"Male\", 37, \"No Education\", \"Working\", \"No\", \"No\", 42.0, 130.0, 24.9, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 10.0, 7.0], [304290, \"Male\", 45, \"No Education\", \"Working\", \"No\", \"No\", 42.0, 165.0, 15.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 400, \"GH\", 0, \"NaN\", 0, 30.0, 21.0], [304484, \"Male\", 55, \"Primary\", \"Non - Working\", \"No\", \"No\", 39.1, 162.0, 14.9, 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 15.0, 5.0], [304678, \"Male\", 42, \"Primary\", \"Working\", \"No\", \"Yes\", 39.0, 165.0, 14.3, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 1.0], [304775, \"Male\", 19, \"Middle\", \"Non - Working\", \"No\", \"No\", 45.0, 178.0, 14.2, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 100, \"GH\", 0, \"NaN\", 0, 10.0, 0.0], [304969, \"Male\", 45, \"No Education\", \"Working\", \"No\", \"No\", 42.0, 156.0, 17.3, 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"Pvt. hospi\", 1000, \"T.Govt\", 0, 15.0, 14.0], [305066, \"Male\", 60, \"Primary\", \"Non - Working\", \"No\", \"Yes\", 56.0, 155.0, 23.3, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 500, \"PHC\", 0, \"GH\", 0, 15.0, 0.0], [305163, \"Male\", 45, \"No Education\", \"Non - Working\", \"No\", \"No\", 61.0, 162.0, 23.2, 0, \"Ini smear -\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 10.0, 7.0], [305357, \"Male\", 30, \"No Education\", \"Working\", \"Yes\", \"No\", 43.0, 175.0, 14.0, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 22.0], [305454, \"Male\", 40, \"Middle\", \"Working\", \"No\", \"No\", 61.0, 166.0, 22.1, 1, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 2500, \"GH\", 0, \"NaN\", 0, 14.0, 1.0], [305551, \"Male\", 58, \"Secondary\", \"Working\", \"No\", \"No\", 48.0, 157.0, 19.5, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 14.0, 4.0], [305648, \"Male\", 60, \"Primary\", \"Non - Working\", \"No\", \"No\", 41.4, 158.0, 16.6, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 1000, \"Pvt. hospi\", 2000, \"PHC\", 0, 15.0, 5.0], [400126, \"Male\", 20, \"Middle\", \"Working\", \"No\", \"No\", 35.0, 161.0, 13.5, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"Pvt. clini\", 200, \"Pvt. docto\", 300, 28.0, 6.0], [400223, \"Male\", 35, \"No Education\", \"Working\", \"Yes\", \"Yes\", 40.0, 165.0, 14.7, 0, \"Ini smear +\", \"Negative\", \"Pvt. clini\", 1000, \"Pvt. clini\", 400, \"GH\", 0, 30.0, 13.0], [400320, \"Male\", 50, \"Primary\", \"Working\", \"No\", \"No\", 40.0, 160.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 600, \"NaN\", 0, \"NaN\", 0, 6.0, 1.0], [400417, \"Female\", 25, \"Primary\", \"Working\", \"No\", \"No\", 43.0, 159.0, 17.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 250, \"GH\", 0, \"NaN\", 0, 4.0, 3.0], [400611, \"Male\", 55, \"Primary\", \"Working\", \"No\", \"No\", 45.0, 157.0, 18.3, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1700, \"Pvt. docto\", 6000, \"GH\", 0, 45.0, 1.0], [400708, \"Female\", 42, \"No Education\", \"Working\", \"No\", \"No\", 40.0, 150.0, 17.8, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 3750, \"Pvt. clini\", 850, \"GH\", 0, 4.0, 1.0], [400805, \"Male\", 50, \"No Education\", \"Working\", \"Yes\", \"Yes\", 42.0, 161.0, 16.2, 0, \"Ini smear +\", \"NaN\", \"Other\", 2500, \"Other\", 2000, \"GH\", 0, 365.0, 5.0], [401484, \"Male\", 30, \"Secondary\", \"Working\", \"Yes\", \"No\", 43.0, 171.0, 14.7, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 15000, \"GH\", 0, \"NaN\", 0, 60.0, 2.0], [401581, \"Male\", 42, \"Middle\", \"Working\", \"Yes\", \"No\", 37.0, 166.0, 13.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 800, \"GH\", 0, \"NaN\", 0, 14.0, 0.0], [401678, \"Male\", 55, \"No Education\", \"Working\", \"Yes\", \"Yes\", 47.0, 168.0, 16.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 2000, \"Pvt. clini\", 3000, \"GH\", 0, 365.0, 4.0], [401775, \"Male\", 47, \"No Education\", \"Working\", \"No\", \"No\", 52.0, 171.0, 17.8, 0, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 3000, \"GH\", 0, \"NaN\", 0, 30.0, 3.0], [401872, \"Male\", 35, \"Primary\", \"Working\", \"Yes\", \"No\", 50.0, 172.0, 16.9, 0, \"Ini smear +\", \"Negative\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 15.0, 5.0], [401969, \"Female\", 44, \"No Education\", \"Working\", \"No\", \"No\", 45.0, 147.0, 20.8, 1, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 5000, \"NaN\", 0, \"NaN\", 0, 180.0, 1.0], [402163, \"Female\", 47, \"No Education\", \"Non - Working\", \"No\", \"No\", 34.0, 149.0, 15.3, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 4.0], [402357, \"Male\", 70, \"No Education\", \"Non - Working\", \"Yes\", \"No\", 45.0, 164.0, 16.7, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 3.0, 3.0], [402454, \"Female\", 30, \"Primary\", \"Working\", \"No\", \"No\", 36.0, 158.0, 14.4, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 7.0], [402648, \"Male\", 67, \"No Education\", \"Working\", \"Yes\", \"No\", 60.0, 153.0, 25.6, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 4.0], [402842, \"Female\", 22, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 42.0, 170.0, 14.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 4000, \"GH\", 0, \"NaN\", 0, 31.0, 7.0], [402939, \"Male\", 48, \"Primary\", \"Non - Working\", \"Yes\", \"No\", 37.0, 155.0, 15.4, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 6000, \"GH\", 0, \"NaN\", 0, 18.0, 4.0], [403036, \"Male\", 29, \"Secondary\", \"Working\", \"No\", \"No\", 45.0, 159.0, 17.8, 0, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 1200, \"GH\", 0, \"NaN\", 0, 7.0, 3.0], [403133, \"Male\", 63, \"No Education\", \"Non - Working\", \"No\", \"No\", 47.0, 168.0, 16.7, 0, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 1500, \"GH\", 0, \"NaN\", 0, 3.0, 12.0], [403327, \"Male\", 52, \"No Education\", \"Working\", \"Yes\", \"Yes\", 44.0, 166.0, 16.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 2300, \"GH\", 0, \"NaN\", 0, 94.0, 1.0], [403521, \"Male\", 38, \"Higher Secondary\", \"Working\", \"No\", \"No\", 38.0, 163.0, 14.3, 0, \"Ini smear -\", \"Positive\", \"PHC\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 22.0], [403618, \"Male\", 40, \"No Education\", \"Working\", \"No\", \"Yes\", 51.0, 166.0, 18.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 200, \"Pvt. hospi\", 3300, \"Pvt. hospi\", 350, 15.0, 0.0], [403812, \"Male\", 44, \"Secondary\", \"Working\", \"Yes\", \"No\", 39.0, 153.0, 16.7, 0, \"Ini smear +\", \"NaN\", \"GH\", 200, \"NaN\", 0, \"NaN\", 0, 8.0, 37.0], [403909, \"Male\", 51, \"No Education\", \"Working\", \"No\", \"No\", 40.0, 167.0, 14.3, 1, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1900, \"Tambram Sanatorium\", 0, \"GH\", 0, 90.0, 4.0], [404006, \"Female\", 19, \"Middle\", \"Non - Working\", \"No\", \"No\", 35.0, 150.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"GH\", 0, \"NaN\", 0, 14.0, 9.0], [404103, \"Male\", 28, \"Primary\", \"Working\", \"Yes\", \"Yes\", 40.0, 153.0, 17.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 300, \"GH\", 0, \"NaN\", 0, 90.0, 6.0], [404200, \"Male\", 42, \"Primary\", \"Working\", \"Yes\", \"Yes\", 42.0, 152.0, 18.2, 1, \"Ini smear +\", \"Positive\", \"Pvt. hospi\", 9500, \"Pvt. hospi\", 1700, \"GH\", 0, 180.0, 5.0], [404394, \"Female\", 22, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 36.0, 163.0, 13.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 150, \"Pvt. hospi\", 3200, \"GH\", 0, 14.0, 14.0], [404491, \"Male\", 23, \"Higher Secondary\", \"Working\", \"No\", \"No\", 50.0, 175.0, 16.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 170, \"PHC\", 0, \"GH\", 0, 5.0, 0.0], [404588, \"Male\", 23, \"Secondary\", \"Working\", \"No\", \"No\", 41.0, 164.0, 15.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 650, \"GH\", 0, \"NaN\", 0, 15.0, 5.0], [404685, \"Male\", 62, \"Secondary\", \"Non - Working\", \"No\", \"No\", 47.0, 167.0, 16.9, 1, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 500, \"GH\", 0, \"NaN\", 0, 14.0, 10.0], [404879, \"Male\", 47, \"Primary\", \"Working\", \"No\", \"No\", 50.0, 172.0, 16.9, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"Pvt. clini\", 1500, \"Pvt. hospi\", 7000, 20.0, 26.0], [404976, \"Male\", 39, \"Secondary\", \"Working\", \"Yes\", \"No\", 56.0, 169.0, 19.6, 0, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 5000, \"Pvt. hospi\", 1000, \"GH\", 0, 180.0, 9.0], [405073, \"Male\", 55, \"Primary\", \"Working\", \"No\", \"No\", 52.0, 166.0, 18.9, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 1500, \"PHC\", 0, \"NaN\", 0, 21.0, 0.0], [405170, \"Male\", 62, \"Primary\", \"Working\", \"Yes\", \"No\", 49.0, 167.0, 17.6, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 350, \"Pvt. clini\", 1200, \"GH\", 0, 15.0, 0.0], [405267, \"Male\", 34, \"Secondary\", \"Working\", \"No\", \"No\", 48.0, 161.0, 18.5, 0, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 4000, \"GH\", 800, \"NaN\", 0, 7.0, 14.0], [405364, \"Male\", 45, \"Primary\", \"Working\", \"Yes\", \"Yes\", 40.0, 150.0, 17.8, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 900, \"GH\", 0, \"NaN\", 0, 7.0, 1.0], [405558, \"Female\", 45, \"No Education\", \"Working\", \"No\", \"No\", 45.0, 155.0, 18.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 2000, \"GH\", 0, \"NaN\", 0, 150.0, 0.0], [405946, \"Female\", 30, \"No Education\", \"Working\", \"No\", \"No\", 40.5, 143.0, 19.8, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 10000, \"GH\", 0, \"NaN\", 0, 40.0, 35.0], [406140, \"Male\", 30, \"Primary\", \"Working\", \"Yes\", \"Yes\", 50.2, 171.0, 17.2, 0, \"Ini smear +\", \"NaN\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 6.0, 12.0], [406237, \"Male\", 53, \"No Education\", \"Working\", \"Yes\", \"Yes\", 40.5, 153.0, 17.3, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 500, \"PHC\", 0, \"NaN\", 0, 14.0, 2.0], [406528, \"Male\", 58, \"Middle\", \"Non - Working\", \"No\", \"No\", 58.0, 169.0, 20.3, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 3.0, 3.0], [406625, \"Male\", 30, \"Middle\", \"Working\", \"No\", \"No\", 41.0, 165.0, 15.1, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 0.0], [406722, \"Male\", 68, \"Primary\", \"Working\", \"No\", \"Yes\", 38.0, 152.0, 16.4, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 3000, \"GH\", 0, \"NaN\", 0, 7.0, 2.0], [406819, \"Male\", 60, \"Primary\", \"Non - Working\", \"Yes\", \"Yes\", 32.0, 167.0, 11.5, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 14.0, 3.0], [406916, \"Male\", 21, \"Secondary\", \"Working\", \"No\", \"No\", 51.0, 162.0, 19.4, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 3.0], [407013, \"Male\", 54, \"Primary\", \"Non - Working\", \"No\", \"No\", 43.0, 165.0, 15.8, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 7.0, 3.0], [407110, \"Male\", 60, \"No Education\", \"Non - Working\", \"No\", \"No\", 43.0, 166.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"PHC\", 0, \"NaN\", 0, 7.0, 0.0], [407207, \"Female\", 55, \"No Education\", \"Non - Working\", \"No\", \"No\", 42.0, 150.0, 18.7, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 9.0], [407304, \"Male\", 50, \"Primary\", \"Non - Working\", \"No\", \"Yes\", 69.0, 173.0, 23.1, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"Pvt. clini\", 5000, \"GH\", 0, 30.0, 10.0], [407401, \"Female\", 38, \"Primary\", \"Non - Working\", \"No\", \"No\", 45.0, 162.0, 17.1, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 0.0], [407595, \"Female\", 45, \"No Education\", \"Working\", \"Yes\", \"Yes\", 50.0, 162.0, 19.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 7.0, 7.0], [407789, \"Male\", 55, \"No Education\", \"Working\", \"No\", \"Yes\", 45.0, 158.0, 18.0, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 7.0], [407886, \"Female\", 60, \"No Education\", \"Working\", \"No\", \"No\", 33.0, 156.0, 13.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 4000, \"GH\", 0, \"NaN\", 0, 14.0, 5.0], [407983, \"Male\", 60, \"Primary\", \"Working\", \"Yes\", \"Yes\", 41.0, 162.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 2000, \"Pvt. hospi\", 1000, \"GH\", 0, 14.0, 6.0], [408080, \"Male\", 50, \"No Education\", \"Working\", \"Yes\", \"No\", 37.0, 168.0, 13.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 7.0, 2.0], [408177, \"Male\", 38, \"Middle\", \"Working\", \"No\", \"No\", 52.0, 166.0, 18.9, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 15000, \"GH\", 0, \"NaN\", 0, 14.0, 1.0], [408274, \"Male\", 49, \"Secondary\", \"Working\", \"Yes\", \"No\", 47.0, 162.0, 17.9, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 7.0], [500133, \"Male\", 19, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 36.0, 148.0, 16.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 10000, \"GH\", 0, \"NaN\", 0, 30.0, 4.0], [500327, \"Female\", 35, \"Higher Secondary\", \"Working\", \"No\", \"No\", 45.0, 165.0, 16.5, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"GH\", 0, \"NaN\", 0, 7.0, 9.0], [500424, \"Female\", 60, \"No Education\", \"Working\", \"No\", \"No\", 50.0, 165.0, 18.4, 0, \"Missing\", \"Positive\", \"Pvt. hospi\", 500, \"NaN\", 0, \"NaN\", 0, 90.0, 1.0], [500715, \"Male\", 65, \"Primary\", \"Working\", \"Yes\", \"No\", 49.0, 165.0, 18.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 30.0, 3.0], [500812, \"Male\", 55, \"Middle\", \"Working\", \"Yes\", \"Yes\", 40.0, 170.0, 13.8, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 30.0, 4.0], [500909, \"Male\", 60, \"Middle\", \"Working\", \"Yes\", \"Yes\", 43.0, 160.0, 16.8, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"Pvt. clini\", 800, \"GH\", 0, 11.0, 4.0], [501006, \"Female\", 23, \"Middle\", \"Working\", \"No\", \"No\", 68.0, 168.0, 24.1, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 15000, \"Pvt. hospi\", 5000, \"GH\", 0, 120.0, 0.0], [501200, \"Female\", 19, \"Secondary\", \"Working\", \"No\", \"No\", 34.0, 160.0, 13.3, 1, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 5000, \"Pvt. hospi\", 1500, \"NaN\", 0, 90.0, 7.0], [501394, \"Male\", 40, \"Primary\", \"Working\", \"Yes\", \"No\", 38.0, 158.0, 15.2, 1, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 5000, \"GH\", 0, \"NaN\", 0, 30.0, 6.0], [501588, \"Male\", 55, \"Middle\", \"Working\", \"Yes\", \"Yes\", 42.0, 165.0, 15.4, 0, \"Ini smear +\", \"Positive\", \"Pvt. hospi\", 30000, \"GH\", 0, \"NaN\", 0, 11.0, 4.0], [501685, \"Male\", 38, \"No Education\", \"Working\", \"Yes\", \"No\", 40.0, 155.0, 16.6, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 1000, \"PHC\", 0, \"NaN\", 0, 30.0, 4.0], [1304069, \"Male\", 57, \"Primary\", \"Working\", \"Yes\", \"No\", 39.5, 169.0, 13.8, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 300, \"GH\", 0, \"NaN\", 0, 8.0, 8.0], [1304166, \"Male\", 51, \"Secondary\", \"Working\", \"Yes\", \"No\", 50.0, 167.0, 17.9, 1, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 30.0, 2.0], [1304263, \"Male\", 65, \"No Education\", \"Working\", \"Yes\", \"No\", 42.0, 168.0, 14.9, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 340, \"GH\", 0, \"NaN\", 0, 60.0, 7.0], [1304360, \"Male\", 60, \"Primary\", \"Working\", \"No\", \"No\", 65.0, 175.0, 21.2, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 50.0, 3.0], [1304554, \"Male\", 58, \"Primary\", \"Working\", \"Yes\", \"Yes\", 56.0, 169.0, 19.6, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 0.0], [1304651, \"Male\", 40, \"Primary\", \"Working\", \"Yes\", \"No\", 45.0, 162.0, 17.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 300, \"GH\", 0, \"NaN\", 0, 30.0, 1.0], [1304748, \"Male\", 47, \"Middle\", \"Working\", \"Yes\", \"Yes\", 50.0, 171.0, 17.1, 0, \"Ini smear +\", \"Negative\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 4.0], [1304845, \"Female\", 26, \"Higher Secondary\", \"Working\", \"No\", \"No\", 32.0, 140.0, 16.3, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 10.0, 4.0], [1304942, \"Male\", 62, \"No Education\", \"Working\", \"Yes\", \"Yes\", 37.0, 163.0, 13.9, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"PHC\", 0, \"NaN\", 0, 14.0, 4.0], [1305039, \"Male\", 40, \"Middle\", \"Working\", \"Yes\", \"Yes\", 48.0, 170.0, 16.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 15.0, 2.0], [1305233, \"Male\", 24, \"Higher Secondary\", \"Working\", \"Yes\", \"No\", 55.0, 170.0, 19.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 2000, \"PHC\", 0, \"NaN\", 0, 5.0, 4.0], [1305330, \"Male\", 38, \"Middle\", \"Working\", \"Yes\", \"Yes\", 44.0, 154.0, 18.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"PHC\", 0, \"NaN\", 0, 14.0, 5.0], [1305427, \"Female\", 33, \"Middle\", \"Working\", \"No\", \"No\", 37.0, 147.0, 17.1, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 3.0], [1305524, \"Male\", 66, \"No Education\", \"Working\", \"Yes\", \"Yes\", 35.3, 155.0, 14.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 2000, \"GH\", 0, \"NaN\", 0, 60.0, 14.0], [1305621, \"Male\", 36, \"Secondary\", \"Working\", \"Yes\", \"Yes\", 44.9, 163.0, 16.9, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"GH\", 0, \"NaN\", 0, 30.0, 7.0], [1305718, \"Male\", 57, \"No Education\", \"Working\", \"Yes\", \"No\", 56.0, 159.0, 22.2, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 4.0, 6.0], [1305912, \"Male\", 65, \"Middle\", \"Working\", \"Yes\", \"No\", 49.7, 154.0, 21.0, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 10000, \"PHC\", 0, \"NaN\", 0, 4.0, \"___NaN___\"], [1306106, \"Female\", 40, \"No Education\", \"Working\", \"No\", \"No\", 51.6, 147.0, 23.9, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 3.0, 5.0], [1306300, \"Male\", 65, \"Primary\", \"Working\", \"No\", \"No\", 47.9, 159.0, 18.9, 0, \"Ini smear +\", \"Negative\", \"GH\", 500, \"NaN\", 0, \"NaN\", 0, 30.0, 16.0], [1306494, \"Male\", 44, \"Middle\", \"Working\", \"No\", \"No\", 47.0, 156.0, 19.3, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 0.0], [1306591, \"Male\", 62, \"Primary\", \"Working\", \"No\", \"Yes\", 59.0, 167.0, 21.2, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"PHC\", 0, \"NaN\", 0, 2.0, 29.0], [1306688, \"Male\", 65, \"Middle\", \"Working\", \"No\", \"Yes\", 43.0, 160.0, 16.8, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 4000, \"GH\", 0, \"NaN\", 0, 20.0, 5.0], [1306979, \"Male\", 50, \"Primary\", \"Working\", \"Yes\", \"No\", 44.1, 163.0, 16.6, 1, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 700, \"GH\", 0, \"NaN\", 0, 30.0, 20.0], [1307076, \"Male\", 65, \"Middle\", \"Working\", \"No\", \"Yes\", 51.1, 159.0, 20.2, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"GH\", 0, \"NaN\", 0, 15.0, 12.0], [1307173, \"Male\", 39, \"Primary\", \"Working\", \"Yes\", \"No\", 42.0, 169.0, 14.7, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 31.0], [1307270, \"Female\", 20, \"Secondary\", \"Non - Working\", \"No\", \"No\", 40.0, 153.0, 17.1, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"GH\", 0, \"NaN\", 0, 30.0, 6.0], [1307367, \"Female\", 30, \"No Education\", \"Working\", \"No\", \"No\", 42.7, 148.0, 19.5, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"GH\", 0, \"NaN\", 0, 15.0, 7.0], [1307464, \"Female\", 45, \"No Education\", \"Working\", \"No\", \"No\", 31.5, 150.0, 14.0, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 800, \"Pvt. hospi\", 4000, \"PHC\", 0, 30.0, 1.0], [1307561, \"Male\", 37, \"No Education\", \"Working\", \"No\", \"No\", 41.0, 159.0, 16.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 2000, \"PHC\", 0, \"GH\", 0, 20.0, 15.0], [1307658, \"Male\", 35, \"Middle\", \"Working\", \"No\", \"No\", 39.2, 162.0, 14.9, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 20.0], [1307755, \"Female\", 65, \"Primary\", \"Non - Working\", \"No\", \"No\", 41.5, 135.0, 22.8, 1, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 8.0], [1307852, \"Male\", 60, \"No Education\", \"Working\", \"No\", \"Yes\", 51.6, 169.0, 18.1, 0, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 1200, \"PHC\", 0, \"NaN\", 0, 1.0, 4.0], [1307949, \"Female\", 23, \"Higher Secondary\", \"Working\", \"No\", \"No\", 38.0, 154.0, 16.0, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 1000, \"Pvt. hospi\", 700, \"PHC\", 0, 3.0, 32.0], [1308046, \"Male\", 40, \"Middle\", \"Working\", \"No\", \"No\", 58.0, 154.0, 24.5, 1, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 3000, \"GH\", 0, \"NaN\", 0, 15.0, 9.0], [1308143, \"Male\", 26, \"Higher Secondary\", \"Working\", \"No\", \"No\", 44.2, 169.0, 15.5, 0, \"Ini smear +\", \"Negative\", \"Pvt. clini\", 600, \"GH\", 0, \"Pvt. clini\", 500, 14.0, 1.0], [1308240, \"Male\", 24, \"Secondary\", \"Working\", \"No\", \"No\", 41.6, 165.0, 15.3, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 8.0], [1308337, \"Male\", 66, \"Primary\", \"Non - Working\", \"No\", \"No\", 36.2, 168.0, 12.8, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 300, \"GH\", 0, \"NaN\", 0, 21.0, 16.0], [1308434, \"Male\", 46, \"Secondary\", \"Non - Working\", \"No\", \"No\", 64.0, 170.0, 22.1, 1, \"Missing\", \"Positive\", \"Pvt. hospi\", 30000, \"NaN\", 0, \"NaN\", 0, 7.0, 35.0], [1308628, \"Male\", 47, \"Secondary\", \"Non - Working\", \"No\", \"No\", 41.7, 158.0, 16.7, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 7000, \"Pvt. docto\", 0, \"PHC\", 0, 14.0, 1.0], [1308725, \"Male\", 65, \"Primary\", \"Working\", \"Yes\", \"No\", 52.6, 167.0, 18.9, 0, \"Missing\", \"Positive\", \"PHC\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 5.0], [1400196, \"Male\", 65, \"No Education\", \"Non - Working\", \"Yes\", \"No\", \"___NaN___\", \"___NaN___\", \"___NaN___\", 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 350, \"Pvt. hospi\", 800, \"PHC\", 0, 30.0, 4.0], [1400293, \"Male\", 65, \"Primary\", \"Working\", \"No\", \"Yes\", \"___NaN___\", \"___NaN___\", \"___NaN___\", 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1500, \"PHC\", 0, \"NaN\", 0, 37.0, 3.0], [1400390, \"Male\", 50, \"No Education\", \"Working\", \"No\", \"No\", \"___NaN___\", \"___NaN___\", \"___NaN___\", 1, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 1000, \"Pvt. docto\", 1000, \"Pvt. hospi\", 2000, 14.0, 1.0], [1400487, \"Male\", 32, \"Primary\", \"Working\", \"No\", \"No\", \"___NaN___\", \"___NaN___\", \"___NaN___\", 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 500, \"Pvt. docto\", 150, \"Pvt. hospi\", 1000, 36.0, 2.0], [1400584, \"Male\", 45, \"Higher Secondary\", \"Working\", \"No\", \"No\", 50.0, \"___NaN___\", \"___NaN___\", 1, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 3000, \"PHC\", 0, \"NaN\", 0, 37.0, 0.0], [1400681, \"Female\", 40, \"No Education\", \"Working\", \"No\", \"No\", 35.0, \"___NaN___\", \"___NaN___\", 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 3000, \"Pvt. clini\", 900, \"PHC\", 0, 30.0, 7.0], [1400778, \"Male\", 70, \"No Education\", \"Working\", \"No\", \"No\", \"___NaN___\", \"___NaN___\", \"___NaN___\", 1, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 6000, \"Tambram Sanatorium\", 0, \"GH\", 0, 26.0, 25.0], [1401069, \"Male\", 56, \"Secondary\", \"Working\", \"No\", \"No\", \"___NaN___\", \"___NaN___\", \"___NaN___\", 1, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 0, \"Pvt. clini\", 0, \"Pvt. clini\", 1500, 60.0, 12.0], [1401166, \"Male\", 60, \"No Education\", \"Working\", \"No\", \"No\", 45.0, \"___NaN___\", \"___NaN___\", 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 10000, \"T.Pvt\", 3000, \"NaN\", 0, 15.0, 7.0], [1401263, \"Male\", 59, \"No Education\", \"Working\", \"No\", \"No\", 45.0, \"___NaN___\", \"___NaN___\", 1, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"PHC\", 0, \"GH\", 0, \"___NaN___\", 16.0], [1401360, \"Female\", 47, \"No Education\", \"Working\", \"No\", \"No\", 45.0, \"___NaN___\", \"___NaN___\", 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 2500, \"Pvt. hospi\", 2000, \"NaN\", 0, 15.0, 4.0], [1401457, \"Male\", 45, \"Missing\", \"Working\", \"Yes\", \"Yes\", 48.0, \"___NaN___\", \"___NaN___\", 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 15.0, 18.0], [1401554, \"Male\", 55, \"Primary\", \"Working\", \"No\", \"No\", 48.0, \"___NaN___\", \"___NaN___\", 1, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1500, \"Pvt. clini\", 250, \"Tambram Sanatorium\", 0, 30.0, 20.0], [1401651, \"Male\", 58, \"No Education\", \"Working\", \"Yes\", \"Yes\", 45.0, \"___NaN___\", \"___NaN___\", 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 90.0, 12.0], [1401748, \"Male\", 55, \"Missing\", \"Working\", \"No\", \"No\", 32.0, 158.0, 12.8, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 4500, \"Pvt. hospi\", 1000, \"Tambram Sanatorium\", 0, 60.0, 0.0], [1401845, \"Male\", 55, \"Middle\", \"Working\", \"Yes\", \"No\", 40.0, 169.0, 14.0, 1, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 2300, \"Pvt. hospi\", 1500, \"NaN\", 0, 19.0, 8.0], [1401942, \"Female\", 58, \"No Education\", \"Working\", \"No\", \"No\", 50.0, \"___NaN___\", \"___NaN___\", 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 3500, \"Tambram Sanatorium\", 0, \"NaN\", 0, 25.0, 3.0], [1402039, \"Male\", 70, \"No Education\", \"Working\", \"No\", \"No\", 30.0, 152.0, 13.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 900, \"GH\", 0, \"NaN\", 0, 27.0, 10.0], [1402233, \"Male\", 35, \"Middle\", \"Working\", \"Yes\", \"No\", 52.0, 155.0, 21.6, 0, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 0, \"Pvt. clini\", 0, \"GH\", 0, 15.0, 10.0], [1402427, \"Male\", 40, \"Secondary\", \"Working\", \"Yes\", \"No\", 37.0, 160.0, 14.5, 0, \"Ini smear +\", \"Negative\", \"Pvt. clini\", 500, \"Pvt. clini\", 500, \"Pvt. hospi\", 15000, 13.0, 10.0], [1402621, \"Male\", 58, \"Secondary\", \"Working\", \"No\", \"No\", 40.0, 160.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"PHC\", 0, \"NaN\", 0, 15.0, 1.0], [1402718, \"Male\", 46, \"Higher Secondary\", \"Working\", \"Yes\", \"Yes\", 37.0, 159.0, 14.6, 0, \"Ini smear +\", \"NaN\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 20.0, 6.0], [1402815, \"Male\", 73, \"Middle\", \"Working\", \"No\", \"Yes\", 55.0, 172.0, 18.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 9.0, 2.0], [1402912, \"Male\", 27, \"Middle\", \"Working\", \"Yes\", \"No\", 41.0, 170.0, 14.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 200, \"Pvt. docto\", 150, \"PHC\", 0, 10.0, 1.0], [1403009, \"Male\", 65, \"No Education\", \"Working\", \"No\", \"No\", 40.0, 158.0, 16.0, 1, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 500, \"Pvt. docto\", 300, \"Pvt. hospi\", 1000, 110.0, 9.0], [1403106, \"Male\", 23, \"Primary\", \"Working\", \"Yes\", \"No\", 110.0, 172.0, 37.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 300, \"GH\", 0, \"NaN\", 0, 14.0, 8.0], [1403203, \"Female\", 24, \"Higher Secondary\", \"Working\", \"No\", \"No\", 34.0, 158.0, 13.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"Pvt. docto\", 540, \"GH\", 0, 14.0, 6.0], [1403300, \"Male\", 34, \"Middle\", \"Working\", \"Yes\", \"No\", 40.0, 153.0, 17.1, 0, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 150, \"Tambram Sanatorium\", 0, \"NaN\", 0, 4.0, 6.0], [1403494, \"Female\", 55, \"No Education\", \"Working\", \"No\", \"No\", 39.0, 155.0, 16.2, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 400, \"Tambram Sanatorium\", 0, \"NaN\", 0, 37.0, 42.0], [1403591, \"Female\", 22, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 34.0, 159.0, 13.4, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 450, \"PHC\", 0, \"NaN\", 0, 5.0, 7.0], [1403688, \"Female\", 20, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 32.0, 158.0, 12.8, 0, \"Ini smear -\", \"Positive\", \"PHC\", 0, \"Pvt. hospi\", 300, \"PHC\", 0, 30.0, 8.0], [1403785, \"Male\", 28, \"Secondary\", \"Working\", \"Yes\", \"Yes\", 41.9, 176.0, 13.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 150, \"PHC\", 0, \"GH\", 0, 10.0, 5.0], [1403882, \"Male\", 64, \"Primary\", \"Working\", \"Yes\", \"Yes\", 40.0, 153.0, 17.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 150, \"Pvt. hospi\", 450, \"GH\", 0, 90.0, 4.0], [1403979, \"Male\", 60, \"Primary\", \"Working\", \"Yes\", \"No\", 42.0, 170.0, 14.5, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 420, \"GH\", 0, \"NaN\", 0, 30.0, 3.0], [1404173, \"Male\", 64, \"Secondary\", \"Working\", \"No\", \"Yes\", 50.0, 165.0, 18.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 180, \"PHC\", 0, \"NaN\", 0, 5.0, 8.0], [1404270, \"Male\", 60, \"Primary\", \"Working\", \"Yes\", \"No\", 40.0, 155.0, 16.6, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"Tambram Sanatorium\", 0, \"NaN\", 0, 90.0, 15.0], [1404464, \"Male\", 55, \"Primary\", \"Working\", \"Yes\", \"Yes\", 42.0, 151.0, 18.4, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 200, \"Pvt. hospi\", 300, \"Tambram Sanatorium\", 0, 30.0, 7.0], [1404561, \"Male\", 49, \"Primary\", \"Working\", \"Yes\", \"No\", 40.0, 158.0, 16.0, 1, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 850, \"Pvt. hospi\", 600, \"GH\", 0, 44.0, 13.0], [1404755, \"Male\", 53, \"Secondary\", \"Working\", \"Yes\", \"No\", 40.0, 161.0, 15.4, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"NaN\", 0, \"NaN\", 0, 10.0, 6.0], [1404852, \"Male\", 60, \"No Education\", \"Working\", \"Yes\", \"Yes\", 49.0, 172.0, 16.6, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 1500, \"PHC\", 0, \"NaN\", 0, 30.0, 12.0], [1404949, \"Male\", 21, \"Secondary\", \"Working\", \"Yes\", \"No\", 42.0, 165.0, 15.4, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 1.0], [1405046, \"Male\", 20, \"Graduate\", \"Non - Working\", \"Yes\", \"Yes\", 50.0, 169.0, 17.5, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 1.0], [1405240, \"Male\", 40, \"Secondary\", \"Working\", \"Yes\", \"No\", 56.0, 165.0, 20.6, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 7.0], [1405434, \"Male\", 27, \"Middle\", \"Working\", \"Yes\", \"No\", 39.0, 153.0, 16.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 200, \"PHC\", 0, \"NaN\", 0, 7.0, 0.0], [1405531, \"Female\", 37, \"No Education\", \"Working\", \"No\", \"No\", 36.0, 152.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 750, \"Tambram Sanatorium\", 0, \"NaN\", 0, 14.0, 12.0], [1405628, \"Male\", 40, \"Middle\", \"Working\", \"Yes\", \"No\", 67.0, 170.0, 23.2, 1, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1500, \"Pvt. hospi\", 1300, \"PHC\", 0, 11.0, 6.0], [1405725, \"Male\", 40, \"Secondary\", \"Working\", \"Yes\", \"No\", 73.0, 170.0, 25.3, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 2000, \"Pvt. hospi\", 1000, \"GH\", 0, 21.0, 15.0], [1405919, \"Female\", 45, \"Secondary\", \"Non - Working\", \"No\", \"No\", 32.3, 156.0, 13.3, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"Pvt. hospi\", 1200, \"Tambram Sanatorium\", 0, 37.0, 30.0], [1406113, \"Male\", 29, \"Primary\", \"Working\", \"Yes\", \"No\", 38.2, 162.0, 14.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 650, \"PHC\", 0, \"NaN\", 0, 7.0, 14.0], [1406210, \"Male\", 43, \"Secondary\", \"Working\", \"Yes\", \"No\", 56.0, 160.0, 21.9, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 400, \"Pvt. clini\", 2100, \"GH\", 0, 7.0, 2.0], [1406307, \"Male\", 65, \"Middle\", \"Working\", \"Yes\", \"Yes\", 30.0, 146.0, 14.1, 0, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 4200, \"Tambram Sanatorium\", 0, \"NaN\", 0, 60.0, 23.0], [1500300, \"Male\", 50, \"No Education\", \"Non - Working\", \"No\", \"No\", 37.0, 155.0, 15.4, 1, \"Ini smear -\", \"Positive\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 15.0, 7.0], [1500494, \"Male\", 70, \"No Education\", \"Non - Working\", \"No\", \"No\", 45.0, 155.0, 18.7, 0, \"Ini smear +\", \"NaN\", \"GH\", 1000, \"Pvt. docto\", 24000, \"NaN\", 0, 30.0, 40.0], [1501270, \"Male\", 55, \"No Education\", \"Non - Working\", \"No\", \"No\", 45.0, 155.0, 18.7, 0, \"Ini smear +\", \"NaN\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 105.0, 7.0], [1501367, \"Male\", 55, \"No Education\", \"Non - Working\", \"No\", \"Yes\", 35.0, 150.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 3.0], [1501561, \"Male\", 65, \"No Education\", \"Non - Working\", \"No\", \"No\", 40.0, 155.0, 16.6, 0, \"Ini smear +\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 60.0, 6.0], [1501658, \"Male\", 67, \"No Education\", \"Non - Working\", \"No\", \"No\", 42.0, 150.0, 18.7, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 21.0, 3.0], [1501852, \"Male\", 48, \"No Education\", \"Non - Working\", \"No\", \"No\", 40.0, 155.0, 16.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 10.0, 14.0], [1501949, \"Male\", 55, \"No Education\", \"Non - Working\", \"No\", \"No\", 45.0, 170.0, 15.6, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 4.0], [1502046, \"Male\", 76, \"Middle\", \"Non - Working\", \"No\", \"No\", 35.0, 145.0, 16.6, 0, \"Ini smear +\", \"NaN\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 27.0], [1502143, \"Male\", 42, \"Secondary\", \"Non - Working\", \"No\", \"No\", 50.0, 155.0, 20.8, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 6000, \"NaN\", 0, \"NaN\", 0, 9.0, 9.0], [1502240, \"Male\", 76, \"No Education\", \"Non - Working\", \"No\", \"No\", 40.0, 155.0, 16.6, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 4.0], [1502337, \"Male\", 22, \"Higher Secondary\", \"Working\", \"No\", \"No\", 52.0, 172.0, 17.6, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 9.0], [1502434, \"Male\", 65, \"No Education\", \"Non - Working\", \"No\", \"No\", 50.0, 170.0, 17.3, 0, \"Ini smear +\", \"Positive\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 30.0, 12.0], [1502531, \"Female\", 45, \"No Education\", \"Non - Working\", \"No\", \"No\", 44.0, 165.0, 16.2, 0, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 6000, \"NaN\", 0, \"NaN\", 0, 30.0, 28.0], [1502628, \"Male\", 24, \"Graduate\", \"Working\", \"No\", \"No\", 55.0, 175.0, 18.0, 0, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 450, \"PHC\", 0, \"NaN\", 0, 7.0, 1.0], [1502822, \"Male\", 35, \"Higher Secondary\", \"Working\", \"No\", \"No\", 55.0, 180.0, 17.0, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 22.0], [1503016, \"Male\", 53, \"Middle\", \"Working\", \"No\", \"No\", 63.0, 180.0, 19.4, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 4.0], [1503210, \"Male\", 46, \"No Education\", \"Working\", \"Yes\", \"Yes\", 38.6, 160.0, 15.1, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 90.0, 5.0], [1503307, \"Male\", 45, \"No Education\", \"Working\", \"No\", \"No\", 65.0, 175.0, 21.2, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 4.0], [1503404, \"Male\", 35, \"Middle\", \"Working\", \"Yes\", \"No\", \"___NaN___\", 160.0, \"___NaN___\", 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 21.0, 11.0], [1503501, \"Male\", 57, \"Primary\", \"Non - Working\", \"No\", \"No\", 45.0, 180.0, 13.9, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 18.0], [1503695, \"Female\", 19, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 36.9, 153.0, 15.8, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"Tambram Sanatorium\", 0, \"NaN\", 0, 18.0, 19.0], [1503792, \"Female\", 40, \"No Education\", \"Working\", \"No\", \"No\", 42.0, 140.0, 21.4, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 20000, \"GH\", 0, \"Tambram Sanatorium\", 0, 201.0, 3.0], [1503986, \"Male\", 18, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 42.0, 152.0, 18.2, 0, \"Ini smear +\", \"Negative\", \"GH\", 0, \"Pvt. clini\", 500, \"GH\", 0, 14.0, 7.0], [1504083, \"Female\", 60, \"No Education\", \"Non - Working\", \"No\", \"No\", 42.0, 150.0, 18.7, 1, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 700, \"GH\", 0, \"NaN\", 0, 2.0, 1.0], [1504180, \"Female\", 50, \"No Education\", \"Working\", \"No\", \"No\", 33.0, 147.0, 15.3, 0, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 800, \"Pvt. hospi\", 1800, \"Tambram Sanatorium\", 0, 51.0, 20.0], [1504277, \"Male\", 65, \"No Education\", \"Working\", \"No\", \"No\", 42.0, 155.0, 17.5, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"Tambram Sanatorium\", 0, \"NaN\", 0, 150.0, 54.0], [1504374, \"Male\", 38, \"Middle\", \"Working\", \"No\", \"No\", 44.0, 160.0, 17.2, 0, \"Ini smear +\", \"Negative\", \"Pvt. clini\", 1000, \"Pvt. docto\", 1000, \"GH\", 0, 21.0, 5.0], [1504568, \"Female\", 22, \"Middle\", \"Working\", \"No\", \"No\", 34.0, 150.0, 15.1, 0, \"Ini smear +\", \"Negative\", \"Pvt. hospi\", 1500, \"Tambram Sanatorium\", 0, \"NaN\", 0, 31.0, 9.0], [1504762, \"Male\", 62, \"Middle\", \"Working\", \"Yes\", \"Yes\", 34.0, 160.0, 13.3, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 400, \"Tambram Sanatorium\", 0, \"NaN\", 0, 7.0, 5.0], [1504859, \"Male\", 49, \"Middle\", \"Working\", \"Yes\", \"No\", 57.0, 170.0, 19.7, 1, \"Missing\", \"Positive\", \"Pvt. hospi\", 700, \"GH\", 0, \"NaN\", 0, 30.0, 7.0], [1504956, \"Male\", 50, \"Primary\", \"Working\", \"Yes\", \"Yes\", 50.0, 175.0, 16.3, 1, \"Ini smear +\", \"Positive\", \"Tambram sanatorium\", 0, \"NaN\", 0, \"NaN\", 0, 21.0, 13.0], [1505053, \"Male\", 60, \"No Education\", \"Working\", \"No\", \"No\", 38.0, 165.0, 14.0, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 400, \"Tambram Sanatorium\", 0, \"NaN\", 0, 30.0, 12.0], [1505150, \"Male\", 68, \"No Education\", \"Working\", \"Yes\", \"Yes\", 48.0, 165.0, 17.6, 0, \"Ini smear +\", \"Positive\", \"GH\", 0, \"Pvt. hospi\", 0, \"PHC\", 0, 90.0, 4.0], [1505247, \"Male\", 24, \"Higher Secondary\", \"Working\", \"No\", \"No\", 48.0, 175.0, 15.7, 0, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 10000, \"PHC\", 0, \"NaN\", 0, 21.0, 11.0], [1505441, \"Male\", 48, \"No Education\", \"Working\", \"Yes\", \"No\", 39.0, 160.0, 15.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 700, \"GH\", 0, \"NaN\", 0, 14.0, 0.0], [1505538, \"Male\", 54, \"Middle\", \"Working\", \"No\", \"No\", 50.0, 150.0, 22.2, 1, \"Ini smear +\", \"Negative\", \"Pvt. clini\", 750, \"GH\", 0, \"NaN\", 0, 7.0, 8.0], [1505635, \"Male\", 50, \"No Education\", \"Working\", \"Yes\", \"Yes\", 40.0, 171.0, 13.7, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 90.0, 7.0], [1505732, \"Male\", 61, \"Primary\", \"Working\", \"Yes\", \"Yes\", 45.3, 171.0, 15.5, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 600, \"GH\", 0, \"NaN\", 0, 7.0, 8.0], [1505926, \"Male\", 39, \"Middle\", \"Working\", \"Yes\", \"Yes\", 49.0, 167.0, 17.6, 0, \"Ini smear -\", \"Positive\", \"Other\", 0, \"GH\", 3000, \"NaN\", 0, 13.0, 16.0], [1506023, \"Male\", 44, \"Primary\", \"Working\", \"Yes\", \"Yes\", 60.0, 184.0, 17.7, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 600, \"Pvt. hospi\", 750, \"PHC\", 0, 30.0, 3.0], [1506120, \"Male\", 37, \"No Education\", \"Working\", \"No\", \"No\", \"___NaN___\", 160.0, \"___NaN___\", 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"Pvt. hospi\", 8000, \"PHC\", 0, 15.0, 7.0], [1506217, \"Male\", 61, \"Secondary\", \"Working\", \"No\", \"No\", 49.0, 160.0, 19.1, 0, \"Ini smear -\", \"Positive\", \"GH\", 500, \"Tambram Sanatorium\", 0, \"NaN\", 0, 30.0, 11.0], [1506314, \"Male\", 50, \"No Education\", \"Working\", \"Yes\", \"No\", 34.0, 170.0, 11.8, 1, \"Ini smear -\", \"Positive\", \"GH\", 0, \"Tambram Sanatorium\", 0, \"NaN\", 0, 47.0, 38.0], [1506411, \"Male\", 61, \"Primary\", \"Non - Working\", \"Yes\", \"Yes\", 56.0, 170.0, 19.4, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 7.0, 3.0], [1506508, \"Male\", 53, \"Middle\", \"Working\", \"Yes\", \"Yes\", 37.3, 168.0, 13.2, 0, \"Ini smear +\", \"Positive\", \"PHC\", 0, \"Tambram Sanatorium\", 0, \"NaN\", 0, 114.0, 14.0], [1506702, \"Male\", 68, \"Primary\", \"Non - Working\", \"Yes\", \"Yes\", 56.0, 178.0, 17.7, 1, \"Ini smear +\", \"Positive\", \"Pvt. hospi\", 10000, \"Pvt. hospi\", 1000, \"PHC\", 0, 15.0, 3.0], [1506896, \"Male\", 25, \"Middle\", \"Working\", \"No\", \"No\", 46.6, 183.0, 13.9, 0, \"Ini smear +\", \"Positive\", \"Pvt. hospi\", 10000, \"Tambram Sanatorium\", 0, \"NaN\", 0, 13.0, 7.0], [1506993, \"Male\", 32, \"Higher Secondary\", \"Working\", \"No\", \"No\", 59.0, 152.0, 25.5, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 2000, \"GH\", 0, \"NaN\", 0, 60.0, 4.0], [1507090, \"Female\", 55, \"No Education\", \"Working\", \"No\", \"No\", 41.0, 156.0, 16.8, 0, \"Ini smear +\", \"Positive\", \"GH\", 0, \"Tambram Sanatorium\", 0, \"NaN\", 0, 60.0, 14.0], [1507187, \"Female\", 45, \"No Education\", \"Non - Working\", \"No\", \"No\", 63.5, 149.0, 28.6, 1, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 0, \"Pvt. hospi\", 6000, \"PHC\", 0, 14.0, 13.0], [1507284, \"Female\", 40, \"No Education\", \"Working\", \"No\", \"No\", 39.4, 152.0, 17.1, 0, \"Ini smear +\", \"Positive\", \"GH\", 0, \"Pvt. clini\", 2400, \"PHC\", 0, 11.0, 11.0], [1507381, \"Female\", 20, \"Higher Secondary\", \"Working\", \"No\", \"No\", 40.0, 152.0, 17.3, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 4.0, 11.0], [1507478, \"Male\", 55, \"Middle\", \"Working\", \"Yes\", \"Yes\", 48.0, 186.0, 13.9, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"NaN\", 0, \"NaN\", 0, 21.0, 14.0], [1507575, \"Female\", 20, \"Secondary\", \"Working\", \"No\", \"No\", 40.0, 152.0, 17.3, 0, \"Ini smear +\", \"Positive\", \"GH\", 0, \"GH\", 0, \"Pvt. docto\", 2000, 16.0, 2.0], [1507672, \"Male\", 44, \"No Education\", \"Working\", \"No\", \"No\", 57.0, 168.0, 20.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1000, \"Tambram Sanatorium\", 0, \"NaN\", 0, 30.0, 20.0], [1507769, \"Male\", 60, \"No Education\", \"Non - Working\", \"Yes\", \"No\", 48.0, 177.0, 15.3, 0, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 2000, \"Pvt. docto\", 1000, \"GH\", 0, 30.0, 12.0], [1600113, \"Male\", 55, \"Primary\", \"Working\", \"Yes\", \"Yes\", 42.6, 142.0, 21.1, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 4.0], [1600210, \"Male\", 63, \"Primary\", \"Working\", \"No\", \"No\", 61.0, 172.0, 20.6, 1, \"Ini smear +\", \"NaN\", \"T.Pvt\", 5000, \"NaN\", 0, \"NaN\", 0, 14.0, 5.0], [1600307, \"Female\", 35, \"Primary\", \"Non - Working\", \"No\", \"No\", 50.0, 130.0, 29.6, 1, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 5000, \"GH\", 0, \"NaN\", 0, 30.0, 2.0], [1600404, \"Male\", 49, \"Primary\", \"Working\", \"No\", \"No\", 48.0, 160.0, 18.7, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 15000, \"GH\", 0, \"NaN\", 0, 30.0, 2.0], [1600501, \"Male\", 27, \"Secondary\", \"Working\", \"Yes\", \"Yes\", 50.0, 165.0, 18.4, 0, \"Ini smear -\", \"NaN\", \"Pvt. clini\", 200, \"Pvt. hospi\", 400, \"Tambram Sanatorium\", 0, 30.0, 6.0], [1600695, \"Female\", 24, \"Secondary\", \"Working\", \"No\", \"No\", 38.0, 125.0, 24.3, 0, \"Ini smear +\", \"Negative\", \"Tambram sanatorium\", 0, \"GH\", 0, \"NaN\", 0, 8.0, 19.0], [1600889, \"Male\", 45, \"Middle\", \"Working\", \"Yes\", \"Yes\", 40.5, 135.0, 22.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 150, \"GH\", 0, \"NaN\", 0, 7.0, 7.0], [1600986, \"Male\", 32, \"Graduate\", \"Working\", \"No\", \"No\", 58.0, 155.0, 24.1, 0, \"Ini smear -\", \"Positive\", \"Pvt. hospi\", 3000, \"Pvt. clini\", 700, \"Pvt. hospi\", 20000, 90.0, 13.0], [1601083, \"Male\", 60, \"Primary\", \"Working\", \"No\", \"No\", 48.0, 145.0, 22.8, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 300, \"GH\", 0, \"NaN\", 0, 30.0, 4.0], [1601180, \"Male\", 44, \"Middle\", \"Non - Working\", \"No\", \"No\", 46.0, 160.0, 18.0, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 8000, \"Pvt. hospi\", 1000, \"Pvt. hospi\", 450, 45.0, 20.0], [1601277, \"Male\", 53, \"Secondary\", \"Working\", \"Yes\", \"Yes\", 60.0, 152.0, 26.0, 1, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 2000, \"GH\", 0, \"NaN\", 0, 17.0, 5.0], [1601374, \"Female\", 49, \"Primary\", \"Working\", \"No\", \"No\", 60.0, 160.0, 23.4, 1, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 6000, \"Tambram Sanatorium\", 0, \"NaN\", 0, 36.0, 15.0], [1601568, \"Male\", 20, \"Higher Secondary\", \"Non - Working\", \"No\", \"No\", 33.0, 165.0, 12.1, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 28.0, 7.0], [1601665, \"Male\", 62, \"No Education\", \"Working\", \"No\", \"Yes\", 49.0, 168.0, 17.4, 1, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 1000, \"GH\", 0, \"NaN\", 0, 90.0, 9.0], [1601762, \"Male\", 60, \"No Education\", \"Working\", \"No\", \"Yes\", 43.6, 165.0, 16.0, 0, \"Ini smear -\", \"Positive\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 16.0], [1601859, \"Female\", 45, \"No Education\", \"Working\", \"No\", \"No\", 48.0, 150.0, 21.3, 0, \"Ini smear +\", \"Positive\", \"Pvt. docto\", 4000, \"GH\", 0, \"NaN\", 0, 180.0, 19.0], [1601956, \"Male\", 48, \"No Education\", \"Working\", \"No\", \"No\", 45.0, 160.0, 17.6, 0, \"Ini smear -\", \"Positive\", \"Pvt. clini\", 1000, \"Pvt. docto\", 3000, \"GH\", 0, 28.0, 1.0], [1602053, \"Male\", 52, \"Secondary\", \"Working\", \"Yes\", \"No\", 52.0, 160.0, 20.3, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 2500, \"GH\", 0, \"NaN\", 0, 12.0, 6.0], [1602150, \"Male\", 64, \"Secondary\", \"Working\", \"No\", \"No\", 53.0, 156.0, 21.8, 1, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 2000, \"GH\", 0, \"NaN\", 0, 90.0, 3.0], [1602247, \"Female\", 38, \"No Education\", \"Working\", \"No\", \"No\", 32.0, 144.0, 15.4, 0, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 200, \"Pvt. docto\", 500, \"GH\", 0, 16.0, 6.0], [1602344, \"Male\", 53, \"Middle\", \"Working\", \"No\", \"No\", 54.0, 164.0, 20.1, 1, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 60.0, 9.0], [1602441, \"Female\", 60, \"No Education\", \"Non - Working\", \"No\", \"No\", 48.4, 162.0, 18.4, 0, \"Ini smear +\", \"Negative\", \"PHC\", 0, \"GH\", 0, \"NaN\", 0, 187.0, 2.0], [1602538, \"Male\", 58, \"No Education\", \"Working\", \"No\", \"No\", 47.0, 159.0, 18.6, 1, \"Ini smear -\", \"Positive\", \"GH\", 0, \"GH\", 500, \"NaN\", 0, 30.0, 14.0], [1602635, \"Male\", 62, \"Primary\", \"Non - Working\", \"No\", \"No\", 60.1, 170.0, 20.8, 1, \"Ini smear -\", \"Positive\", \"Pvt. docto\", 3000, \"GH\", 0, \"NaN\", 0, 21.0, 16.0], [1602732, \"Male\", 55, \"No Education\", \"Working\", \"Yes\", \"No\", 38.3, 164.0, 14.2, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 3.0, 3.0], [1602829, \"Male\", 25, \"Graduate\", \"Working\", \"No\", \"No\", 48.4, 167.0, 17.4, 0, \"Ini smear +\", \"Negative\", \"Pvt. clini\", 650, \"Pvt. hospi\", 350, \"Pvt. hospi\", 10000, 25.0, 8.0], [1603023, \"Male\", 43, \"Middle\", \"Working\", \"Yes\", \"Yes\", 40.2, 163.0, 15.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 30.0, 6.0], [1603120, \"Male\", 35, \"No Education\", \"Working\", \"Yes\", \"Yes\", 46.6, 168.0, 16.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 3000, \"GH\", 0, \"NaN\", 0, 30.0, 2.0], [1603217, \"Male\", 57, \"Middle\", \"Working\", \"No\", \"No\", 46.5, 162.0, 17.7, 0, \"Ini smear +\", \"Negative\", \"Pvt. docto\", 200, \"GH\", 0, \"NaN\", 0, 30.0, 16.0], [1603314, \"Male\", 36, \"Middle\", \"Working\", \"Yes\", \"Yes\", 43.5, 160.0, 17.0, 0, \"Ini smear +\", \"NaN\", \"GH\", 0, \"NaN\", 0, \"NaN\", 0, 14.0, 8.0], [1603411, \"Male\", 23, \"Higher Secondary\", \"Working\", \"No\", \"No\", 47.5, 169.0, 16.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"GH\", 0, \"NaN\", 0, 14.0, 4.0], [1603508, \"Male\", 41, \"No Education\", \"Working\", \"No\", \"No\", 48.0, 175.0, 15.7, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 30.0, 2.0], [1603605, \"Male\", 52, \"Primary\", \"Working\", \"No\", \"No\", 46.0, 172.0, 15.5, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 21000, \"GH\", 0, \"NaN\", 0, 74.0, 3.0], [1603702, \"Male\", 39, \"Primary\", \"Working\", \"Yes\", \"No\", 62.0, 162.0, 23.6, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"Pvt. docto\", 300, \"GH\", 0, 30.0, 20.0], [1603896, \"Male\", 45, \"No Education\", \"Working\", \"No\", \"Yes\", 43.2, 180.0, 13.3, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 5000, \"GH\", 0, \"NaN\", 0, 60.0, 10.0], [1603993, \"Male\", 36, \"Primary\", \"Working\", \"No\", \"No\", 41.4, 166.0, 15.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 1000, \"Pvt. docto\", 500, \"GH\", 0, 30.0, 10.0], [1604090, \"Female\", 27, \"Secondary\", \"Working\", \"No\", \"No\", 33.0, 148.0, 15.1, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 30.0, 14.0], [1604187, \"Male\", 35, \"Secondary\", \"Working\", \"Yes\", \"No\", 50.0, 164.0, 18.6, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 30.0, 10.0], [1604284, \"Male\", 47, \"No Education\", \"Working\", \"Yes\", \"Yes\", 46.7, 160.0, 18.2, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 500, \"GH\", 0, \"NaN\", 0, 30.0, 15.0], [1604381, \"Male\", 55, \"No Education\", \"Working\", \"No\", \"Yes\", 44.0, 166.0, 16.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. clini\", 500, \"Pvt. docto\", 5000, \"GH\", 0, 90.0, 5.0], [1604478, \"Male\", 35, \"Primary\", \"Working\", \"Yes\", \"No\", 45.0, 161.0, 17.4, 1, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 4500, \"GH\", 0, \"NaN\", 0, 21.0, 7.0], [1604575, \"Male\", 63, \"Primary\", \"Working\", \"Yes\", \"Yes\", 52.6, 176.0, 17.0, 0, \"Ini smear +\", \"NaN\", \"Pvt. hospi\", 400, \"GH\", 0, \"GH\", 0, 365.0, 13.0], [1604672, \"Male\", 44, \"Middle\", \"Working\", \"Yes\", \"Yes\", 42.7, 175.0, 13.9, 0, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 9000, \"Pvt. docto\", 800, \"GH\", 0, 14.0, 11.0], [1604769, \"Male\", 60, \"Middle\", \"Working\", \"No\", \"No\", 64.2, 175.0, 21.0, 1, \"Ini smear +\", \"Positive\", \"Pvt. clini\", 500, \"Tambram Sanatorium\", 0, \"NaN\", 0, 14.0, 10.0], [1604866, \"Male\", 63, \"Middle\", \"Working\", \"No\", \"Yes\", 38.5, 160.0, 15.0, 1, \"Ini smear +\", \"NaN\", \"Pvt. docto\", 1000, \"Tambram Sanatorium\", 0, \"NaN\", 0, 180.0, 22.0], [1604963, \"Male\", 65, \"No Education\", \"Working\", \"No\", \"No\", 37.0, 167.0, 13.3, 0, \"Ini smear +\", \"NaN\", \"PHC\", 0, \"Tambram Sanatorium\", 0, \"NaN\", 0, 150.0, 20.0], [1605060, \"Male\", 60, \"Middle\", \"Working\", \"No\", \"No\", 46.8, 155.5, 19.4, 0, \"Missing\", \"Positive\", \"Pvt. hospi\", 300, \"Pvt. clini\", 3200, \"GH\", 0, 90.0, 2.0]]"};
+        new ITable(table, dt_args);
+    });
+</script>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tndistrict_1.png" class="img-fluid figure-img"></p>
+<figcaption>Map of Tamil Nadu.</figcaption>
+</figure>
+</div>
+</section>
+<section id="bivariate-plot-showing-the-relationship-between-sex-and-treatment-initiation-delays." class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-plot-showing-the-relationship-between-sex-and-treatment-initiation-delays.">Bivariate plot showing the relationship between sex, and treatment initiation delays.</h2>
+<div id="32c45f49" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.1.1.min.js" integrity="sha256-HUEFyfiTnZJxCxur99FjbKYTvKSzwDaD3/x5TqHpFu4=" crossorigin="anonymous"></script>                <div id="75ef8773-bd12-425e-95b8-c28586f98eb8" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("75ef8773-bd12-425e-95b8-c28586f98eb8")) {                    Plotly.newPlot(                        "75ef8773-bd12-425e-95b8-c28586f98eb8",                        [{"alignmentgroup":"True","box":{"visible":true},"hovertemplate":"Sex=%{x}\u003cbr\u003eTreatment initiation delay (in days)=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Male","marker":{"color":"#636efa"},"name":"Male","offsetgroup":"Male","orientation":"v","scalegroup":"True","showlegend":true,"x":["Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male","Male"],"x0":" ","xaxis":"x","y":{"dtype":"f8","bdata":"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\u002fAAAAAAAACEAAAAAAAAAUQAAAAAAAAPA\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"},"y0":" ","yaxis":"y","type":"violin"},{"alignmentgroup":"True","box":{"visible":true},"hovertemplate":"Sex=%{x}\u003cbr\u003eTreatment initiation delay (in days)=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Female","marker":{"color":"#EF553B"},"name":"Female","offsetgroup":"Female","orientation":"v","scalegroup":"True","showlegend":true,"x":["Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female","Female"],"x0":" ","xaxis":"x","y":{"dtype":"f8","bdata":"AAAAAAAAEEAAAAAAAAA1QAAAAAAAAAhAAAAAAAAAGEAAAAAAAAAQQAAAAAAAAPA\u002fAAAAAAAAHEAAAAAAAAAiQAAAAAAAAPh\u002fAAAAAAAAEEAAAAAAAADwPwAAAAAAACBAAAAAAAAAFEAAAAAAAAAQQAAAAAAAgEVAAAAAAAAACEAAAAAAAAA3QAAAAAAAAD9AAAAAAAAACEAAAAAAAAA1QAAAAAAAABxAAAAAAAAAOUAAAAAAAAAcQAAAAAAAAC5AAAAAAAAAAAAAAAAAAAA3QAAAAAAAAABAAAAAAAAACEAAAAAAAAA3QAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAABRAAAAAAAAACEAAAAAAAADwPwAAAAAAAPA\u002fAAAAAAAAEEAAAAAAAAAcQAAAAAAAABxAAAAAAAAAIkAAAAAAAAAsQAAAAAAAAAAAAAAAAACAQUAAAAAAAAAiQAAAAAAAAAAAAAAAAAAAHEAAAAAAAAAUQAAAAAAAACJAAAAAAAAA8D8AAAAAAAAAAAAAAAAAABxAAAAAAAAAAEAAAAAAAAAYQAAAAAAAACRAAAAAAAAAMEAAAAAAAAAQQAAAAAAAACBAAAAAAAAAP0AAAAAAAAAoQAAAAAAAABxAAAAAAAAACEAAAAAAAAAmQAAAAAAAAABAAAAAAAAAGEAAAAAAAAAIQAAAAAAAADRAAAAAAAAACEAAAAAAAAAUQAAAAAAAABRAAAAAAAAAFEAAAAAAAAAAQAAAAAAAADRAAAAAAAAACEAAAAAAAAAAQAAAAAAAACpAAAAAAAAAIEAAAAAAAABDQAAAAAAAAABAAAAAAAAAO0AAAAAAAAAIQAAAAAAAABxAAAAAAAAAGEAAAAAAAADwPwAAAAAAABhAAAAAAAAAIEAAAAAAAAAgQAAAAAAAACJAAAAAAAAA8D8AAAAAAAAIQAAAAAAAABBAAAAAAAAAJkAAAAAAAAAiQAAAAAAAAAhAAAAAAAAACEAAAAAAAAAkQAAAAAAAAPA\u002fAAAAAAAAEEAAAAAAAAAYQAAAAAAAABRAAAAAAAAACEAAAAAAAAAQQAAAAAAAAAhAAAAAAAAANEAAAAAAAAAIQAAAAAAAACBAAAAAAAAAIEAAAAAAAAAqQAAAAAAAABRAAAAAAAAAFEAAAAAAAAAmQAAAAAAAABBAAAAAAAAAAEAAAAAAAAAmQAAAAAAAABBAAAAAAAAAEEAAAAAAAAAYQAAAAAAAABBAAAAAAAAAHEAAAAAAAAAwQAAAAAAAABRAAAAAAAAAJEAAAAAAAAAmQAAAAAAAAAhAAAAAAAAAFEAAAAAAAAAwQAAAAAAAACxAAAAAAAAAHEAAAAAAAAAIQAAAAAAAABBAAAAAAAAAGEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAMUAAAAAAAAAqQAAAAAAAABBAAAAAAAAAGEAAAAAAAAAgQAAAAAAAACJAAAAAAAAAMkAAAAAAAAAUQAAAAAAAADlAAAAAAAAAFEAAAAAAAAAcQAAAAAAAABxAAAAAAAAAGEAAAAAAAAAkQAAAAAAAADFAAAAAAAAAFEAAAAAAAAA8QAAAAAAAACBAAAAAAAAAHEAAAAAAAAAAAAAAAAAAACJAAAAAAACAQkAAAAAAAAAAQAAAAAAAABxAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAhAAAAAAAAAFEAAAAAAAAAYQAAAAAAAABxAAAAAAAAA8D8AAAAAAAAgQAAAAAAAAEBAAAAAAAAAHEAAAAAAAAAQQAAAAAAAAAhAAAAAAAAAGEAAAAAAAABFQAAAAAAAABxAAAAAAAAAIEAAAAAAAAAoQAAAAAAAAD5AAAAAAAAAPEAAAAAAAAAzQAAAAAAAAAhAAAAAAAAA8D8AAAAAAAA0QAAAAAAAACJAAAAAAAAALEAAAAAAAAAqQAAAAAAAACZAAAAAAAAAJkAAAAAAAAAAQAAAAAAAAABAAAAAAAAAM0AAAAAAAAAuQAAAAAAAADNAAAAAAAAAGEAAAAAAAAAAQAAAAAAAACxA"},"y0":" ","yaxis":"y","type":"violin"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Sex"},"categoryorder":"array","categoryarray":["Male","Female"]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Treatment initiation delay (in days)"}},"legend":{"title":{"text":"Sex"},"tracegroupgap":0},"violinmode":"overlay"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('75ef8773-bd12-425e-95b8-c28586f98eb8');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+<section id="interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
+<p>Males had a greater distribution in the number of days taken for treatment initiation. The max number of treatment delay days was seen among males with a total of 110 days. The median number of treatment delay days for both sexes was 6 days.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

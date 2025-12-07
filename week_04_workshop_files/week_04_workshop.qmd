@@ -1,0 +1,62 @@
+---
+title: "India TB Pathways Analysis"
+format: html
+execute:
+    echo: false
+author: "Loza Biru"
+---
+
+
+```{python}
+import plotly.express as px
+```
+```{python}
+import pandas as pd
+```
+```{python}
+import itables
+from itables import show
+```
+
+## The India TB Pathways dataset
+
+*The India TB Pathways dataset is based on a study conducted in Vellore district, Tamil Nadu, India. It examines the pre-diagnostic costs and health-seeking behavior of 880 new adult pulmonary tuberculosis patients registered at Primary Health Centres (PHCs).*
+
+
+
+```{python}
+India = pd.read_csv('/Users/shargie/Desktop/Graph_courses_python/data/india_tb_pathways_and_costs.csv')
+```
+
+
+
+```{python}
+show(India)
+```
+
+
+![Map of Tamil Nadu.](images/tndistrict_1.png)
+
+
+## Bivariate plot showing the relationship between sex, and treatment initiation delays. 
+
+
+```{python}
+px.violin(India, y="Treatment initiation delay (in days)", x="Sex", color="Sex", box=True)
+```
+
+
+
+```{python}
+max_delay = int(India["Treatment initiation delay (in days)"].max()) 
+
+Median_delay = int(India["Treatment initiation delay (in days)"].median())
+```
+
+### Interpretation 
+
+Males had a greater distribution in the number of days taken for treatment initiation. 
+The max number of treatment delay days was seen among males with a total of  `{python} max_delay` days.
+The median number of treatment delay days for both sexes was `{python} Median_delay` days.
+
+
