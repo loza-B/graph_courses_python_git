@@ -1,0 +1,509 @@
+---
+title: "Relationship between TB incidence and Undernourishment prevalence"  
+format: dashboard  
+theme: Flatly 
+---
+
+```{python}
+# Load libraries
+import pandas as pd
+import plotly.express as px
+import itables 
+import country_converter as coco
+```
+
+
+```{python}
+# Load datasets
+
+## TB incidence dataset
+tb_incidence_raw = pd.read_csv(
+    "data/all_forms_of_tb_incidence_per_100000_estimated.csv"
+)
+
+## Undernourishment dataset
+undernourishment_raw = pd.read_csv("data/undernourishment.csv")
+
+```
+
+
+```{python}
+# Reshaping datasets
+
+## TB incidence data wide to long
+tb_incidence_long = tb_incidence_raw.melt(
+    id_vars=["geo", "name"], var_name="year", value_name="TB_incidence"
+)
+
+
+## Undernourishment wide to long
+undernourishment_long = undernourishment_raw.melt(
+    id_vars=["geo", "name"], var_name="year", value_name="Undernourishment prevalence"
+)
+
+```
+
+```{python}
+# Converting year variable to numeric 
+tb_incidence_long["year"] = pd.to_numeric(tb_incidence_long["year"], errors="coerce")
+
+undernourishment_long["year"] = pd.to_numeric(undernourishment_long["year"], errors="coerce")
+```
+
+```{python}
+# Convert country abbreviations to capital
+
+tb_incidence_long["iso_alpha"] = tb_incidence_long["geo"].str.upper()
+
+undernourishment_long["iso_alpha"] = undernourishment_long["geo"].str.upper()
+```
+
+```{python}
+# Convert country codes to continent names for regional data analysis
+tb_incidence_long["continent"] = coco.convert(
+    tb_incidence_long["iso_alpha"], to="continent"
+)
+
+undernourishment_long["continent"] = coco.convert(
+    undernourishment_long["iso_alpha"], to="continent"
+)
+
+```
+
+```{python}
+# Highest TB incidence country in 2024
+
+## Limit data to 2024 (latest available)
+tb_incidence_long_2024 = tb_incidence_long.query("year == 2024")
+
+## Highest TB incidence data
+highest_TB_incidence_row = (
+    tb_incidence_long_2024.sort_values("TB_incidence", ascending=False)
+    .head(1)
+    .squeeze()
+)
+
+
+highest_TB_incidence_country = highest_TB_incidence_row["name"]
+highest_TB_incidence_value = round(highest_TB_incidence_row["TB_incidence"], 1)
+
+
+## Lowest TB incidence data
+lowest_TB_incidence_row = (
+    tb_incidence_long_2024.sort_values("TB_incidence", ascending=True).head(1).squeeze()
+)
+lowest_TB_incidence_country = lowest_TB_incidence_row["name"]
+lowest_TB_incidence_value = round(lowest_TB_incidence_row["TB_incidence"], 1)
+
+```
+
+
+```{python}
+# Global TB incidence from 2000 to 2024
+map_fig_1 = px.choropleth(
+    tb_incidence_long,
+    locations="iso_alpha",
+    color="TB_incidence",
+    hover_name="name",
+    hover_data={"TB_incidence": True, "iso_alpha": False},
+    animation_frame="year",
+    color_continuous_scale="YlGnBu",
+    range_color=(0, 1000),
+    title="Global TB incidence rates (2000-2024)",
+)
+
+# Table with countries that have highest TB incidence in 2024
+table_tb_top_10 = (
+    tb_incidence_long_2024.sort_values("TB_incidence", ascending=False)[
+        ["name", "TB_incidence"]
+    ]
+    .head(10)
+    .rename(columns={"name": "country"})
+)
+
+fig_top_10_TB = px.bar(
+    table_tb_top_10,
+    x="TB_incidence",
+    y="country",
+    title="Top 10 countries with the highest TB incidence rates in 2024",
+    labels={"TB_incidence": "TB incidence per 100,000"},
+)
+
+# Trends in TB incidence over time in top 5 countries with highest TB
+tb_incidence_subset = tb_incidence_long.query(
+    'name == ["Kiribati", "Papua New Guinea", "Philippines", "Lesotho", "Timor-Leste"]'
+)
+
+
+# Time series to look at TB incidence trends over time
+fig_chart_TB = px.line(
+    tb_incidence_subset,
+    x="year",
+    y="TB_incidence",
+    color="name",
+    title="TB incidence over time (2000-2024)",
+    labels={"TB_incidence": "TB incidence per 100,000"},
+).update_layout(showlegend=False)
+
+
+```
+
+
+```{python}
+# TB incidence trends across continents in 2024
+fig_box_1 = px.box(
+    tb_incidence_long_2024,
+    x="continent",
+    y="TB_incidence",
+    color="continent",
+    hover_name="name",
+    title="TB Incidence across continents (2024)",
+    labels={"TB_incidence": "TB Incidence per 100,000"},
+).update_layout(showlegend=False)
+
+```
+
+
+```{python}
+# Highest undernourishment prevalence country in 2022
+
+## Limit data to 2022 (latest available)
+undernourishment_long_2022 = undernourishment_long.query("year == 2022")
+
+## Highest undernourishment data
+highest_row_undernourishment = (
+    undernourishment_long_2022.sort_values(
+        "Undernourishment prevalence", ascending=False
+    )
+    .head(1)
+    .squeeze()
+)
+
+highest_undernourishment_country = highest_row_undernourishment["name"]
+highest_undernourishment_value = round(
+    highest_row_undernourishment["Undernourishment prevalence"], 1
+)
+
+
+## Lowest undernourishment data
+lowest_row_undernourishment = (
+    undernourishment_long_2022.sort_values(
+        "Undernourishment prevalence", ascending=True
+    )
+    .head(1)
+    .squeeze()
+)
+lowest_undernourishment_country = lowest_row_undernourishment["name"]
+lowest_undernourishment_value = round(
+    lowest_row_undernourishment["Undernourishment prevalence"], 1
+)
+
+```
+
+
+```{python}
+# Global undernourishment trends from 2001 to 2024
+
+map_fig_2 = px.choropleth(
+    undernourishment_long,
+    locations="iso_alpha",
+    color="Undernourishment prevalence",
+    hover_name="name",
+    hover_data={"Undernourishment prevalence": True, "iso_alpha": False},
+    animation_frame="year",
+    color_continuous_scale="YlGnBu",
+    title="Global undernourishment prevalence (2001-2022)",
+)
+
+
+# Table with countries that have the highest undernourishment in 2022
+
+table_undernourishment_top_10 = (
+    undernourishment_long_2022.sort_values(
+        "Undernourishment prevalence", ascending=False
+    )[["name", "Undernourishment prevalence"]]
+    .head(10)
+    .rename(columns={"name": "country"})
+)
+
+fig_undernourishment_top_10 = px.bar(
+    table_undernourishment_top_10,
+    x="Undernourishment prevalence",
+    y="country",
+    title="Top 10 countries with the highest TB incidence rates in 2024",
+    labels={"Undernourishment prevalence": "Undernourishment prevalence (%)"},
+)
+
+# Trends in undernourishment prevalence over time in top 5 countries with highest undernourishment prevalence
+
+undernourishment_subset = undernourishment_long.query(
+    'name == ["Haiti", "Madagascar", "Yemen", "Liberia", "Zimbabwe"]'
+)
+
+
+# Time series to look at TB incidence trends over time
+
+fig_chart_undernourishment = px.line(
+    undernourishment_subset,
+    x="year",
+    y="Undernourishment prevalence",
+    color="name",
+    title="Undernourishment prevalence over time (2001-2022)",
+    labels={"Undernourishment prevalence": "Undernourishment prevalence (%)"},
+).update_layout(showlegend=False)
+
+```
+
+
+ ```{python}
+# Undernourishment prevalence trends across continents in 2022
+fig_box_2 = px.box(
+     undernourishment_long_2022, 
+     x="continent", 
+     y="Undernourishment prevalence", 
+     color="continent", 
+     hover_name="name",
+     title="Undernourishment prevalence across continents (2022)",
+     labels={"Undernourishment prevalence": "Undernourishment prevalence (%)"},
+).update_layout(showlegend=False)
+
+ ```
+
+
+```{python}
+# Restrict TB incidence data from 2001 to 2022 since we only have malnourishment data for these dates
+
+tb_incidence_2001_2022 = tb_incidence_long.query("2001 <= year <= 2022") 
+
+```
+
+```{python}
+# Merge TB and undernourishment data
+tb_undernourishment_merged = pd.merge(
+    tb_incidence_2001_2022,
+    undernourishment_long,
+    on=["name", "geo", "year", "iso_alpha", "continent"],
+    how="outer",
+)
+
+```
+
+```{python}
+# Comparison between TB incidence rates and undernourishment prevalence betwee 2001 and 2022
+
+fig_scatter = px.scatter(
+    tb_undernourishment_merged,
+    x="Undernourishment prevalence",
+    y="TB_incidence",
+    title="Relationship between TB incidence and undernourishment prevalence (2001-2022)",
+    hover_name="name",
+    color="name",
+    animation_frame="year",
+    labels={
+        "Undernourishment prevalence": "Undernourishment prevalence (%)",
+        "TB_incidence": "TB incidence per 100,000)",
+    },
+).update_layout(showlegend=False)
+
+tb_undernourishment_merged_2022 = tb_undernourishment_merged.query("year == 2022")
+
+# TB incidence vs undernourishment prevalence 2022
+fig_scatter_2022 = px.scatter(
+    tb_undernourishment_merged_2022,
+    x="Undernourishment prevalence",
+    y="TB_incidence",
+    title="Relationship between TB incidence and undernourishment prevalence (2022)",
+    color="continent",
+    hover_name="name",
+    labels={
+        "Undernourishment prevalence": "Undernourishment prevalence (%)",
+        "TB_incidence": "TB incidence per 100,000)",
+    },
+)
+
+```
+
+# TB incidence overview 
+
+## Row 1 {height=30%}
+
+::: {.valuebox icon="arrow-up" color="#59718eff" title="Highest TB incidence (per 100,000)"}
+
+`{python} str(highest_TB_incidence_value)`
+
+`{python} highest_TB_incidence_country`
+
+:::
+
+
+::: {.valuebox icon="arrow-down" color="#59718eff" title="Lowest TB incidence (per 100,000)"} 
+
+`{python} str(lowest_TB_incidence_value)`
+
+`{python} lowest_TB_incidence_country`
+
+:::
+
+
+## Row 2 {height=60%}
+
+### Column {.tabset width="20%"}
+
+#### Map
+
+```{python}
+map_fig_1
+```
+
+#### Insights
+The highest incidence is seen in southern and central african countries. Between 2000 and 2024, there is a general trend of decreasing TB incidence globally.
+
+### {width=50%}
+
+### Column {.tabset width="20%"}
+
+#### Bar
+
+```{python}
+fig_top_10_TB 
+```
+
+#### Insights 
+The following graph shows the ten countries with the highst TB incidence rates during 2024. Kiribati had the highest incidence rate at 945 new cases per 100,000 people. 
+
+# TB incidence regional and time trends
+
+## Row 1 
+
+### Column {.tabset width="20%"}
+
+#### Time series
+
+```{python}
+fig_chart_TB
+```
+
+#### Insights 
+For the following graph five countries with the highest TB incidence rates during 2024 were chosen. The graph presents the TB incidence rates over time in the selected five countries. Overall, TB incidence rates have been on a steady decline since 2000, however a slight increase in all 5 countries was observed during 2020. This rise during 2020 has concernigly continued in Kiribati, Papua New Guinea, Philippines and Timor-Leste. 
+
+
+### Column {.tabset width="20%"}
+
+#### Regional trends
+```{python}
+fig_box_1
+```
+
+#### Insights
+This figure shows the TB incidence rates across continents during 2024. Africa has the highest median TB incidence rate at 139.5. Great variability is observed in Oceania, with the highest TB incidence rate being 945 and lowest being at 1.9. 
+
+
+# Undernourishment prevalence overview 
+
+## Row 1 {height=40%}
+
+::: {.valuebox icon="arrow-up" color="#59718eff" title="Highest undernourishment prevalence (%)"}
+
+`{python} str(highest_undernourishment_value)`
+
+`{python} highest_undernourishment_country`
+
+:::
+
+
+::: {.valuebox icon="arrow-down" color="#59718eff" title="Lowest undernourishment prevalence (%)"} 
+
+`{python} str(lowest_undernourishment_value)`
+
+`{python} lowest_undernourishment_country`
+
+:::
+
+## Row 2 {height=60%}
+
+### Column {.tabset width="20%"}
+
+#### Map
+
+```{python}
+map_fig_2
+```
+
+#### Insights
+The highest undernourishment prevalence is seen mainly in sub-Saharan Africa and South Asia. While the prevalence of undernourishment has decreased between 20001 and 2022 in many countries, some coutnries such as the Democratic Republic of Congo and Zimbabwe have unfortunately experienced an increased prevalence during recent years. 
+
+### {width=50%}
+
+### Column {.tabset width="20%"}
+
+#### Bar
+
+```{python}
+fig_undernourishment_top_10
+```
+
+#### Insights 
+The following graph shows the ten countries with the highst undernourishemnt prevalence during 2022. Haiti had the highest prevalence at 50.4% of the population experiencing undernourishment. 
+
+# Undernourishment regional and time trends
+
+## Row 1 
+
+### Column {.tabset width="20%"}
+
+#### Time series
+
+```{python}
+fig_chart_undernourishment
+```
+
+#### Insights 
+For the following graph five countries with the highest undernourishment prevalence in 2022 were selected. The graph presents the undernourishment prevalence over time in the selected five countries. While undernourishment prevalence was declining in the 2000s, the prevalence of undernourishment is now on the rise in all five countries. The prevalence is now higher in 2022 compared to the 2001 prevalence in all five countries. 
+
+### Column {.tabset width="20%"}
+
+#### Regional trends
+```{python}
+fig_box_2
+```
+
+#### Insights
+This figure shows the undernourishment prevalence across continents during 2022. The highest median undernourishment prevalence is seen in Africa at 16.9. Europe had the lowest undernourishment prevalence.
+
+
+# TB incidence and Undernourishment prevalence 
+
+## Row 1 
+
+### Column {.tabset width="20%"}
+
+#### TB incidence vs Undernourishment over time
+
+```{python}
+fig_scatter
+```
+
+#### Insights 
+The following scatter plot shows the relationship between TB incidence and undernourishment over time globally. From 2001 to 2022, there is a general trend of decreasing TB incidence and undernourishment prevalence. There is a slight relationship between TB incidence and undernourishment. For example, Djibouti had the highest TB incdence rate in 2001 (2650), and amongst the highest undernourshment prevalence (41.9%). As the undernourishment prevalence dropped to 12.9% the TB incidence also dropped to 462. However, not all countries follow these trends. Kiribati and the Philippines which have the highest TB incidence rates in recent years have very low undernourishment prevalence. 
+
+### Column {.tabset width="20%"}
+
+#### Regional trends in 2022
+```{python}
+fig_scatter_2022
+```
+
+#### Insights
+This figure shows the undernourishment prevalence and TB incidence in 2022. Again there is a slight relationship seen between the two variables, which is more visible when looking at continents individually. The relationship between undernourishment and TB incidence is particularly strong in the African continent. 
+
+
+# Conclusion 
+The data shows a general decline in TB incidence and undernourishment prevalence over time. However, the data also highlighted specific countries that have experienced an uptick in both TB incidence and undernourishment prevalence in more recent years. While there was a slight trend between TB incidence rates and undernourishment prevalence, this was not true for all countries globally. One needs to factor the many other factors that can influence TB incidence rates when interpreting this data. For example a general increase in quality of life is associated with reductions in TB incidence, which can also be associated with decreasing undernourishment prevalence. Some countries may also be under reporting TB incidence rates, such as Palestine which has experienced a breakdown in its healthcare infrastructure due to ongoing conflict. While the data shows that it had the lowest incidence of TB in 2024, the reported data may not be truly reflective of the number of new TB cases in the country. 
+
+
+# Data download 
+
+```{python}
+# Display full dataset with itables
+itables.show(tb_undernourishment_merged, caption="Gapminder Dataset", buttons=["csvHtml5"])
+```
